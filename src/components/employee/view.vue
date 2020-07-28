@@ -13,15 +13,24 @@
           </div>
         </div>
         <div class="box-body">
-          	<form action="toview.mvc" method = post>
+          	<form>
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">部门名称</label>
-			    <span>  </span>
+			    <label for="exampleInputEmail1">员工姓名：</label>
+			    <span v-text="employee.name">  </span>
 			    <small id="emailHelp" class="form-text text-muted"></small>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">部门编号</label>
-			    <span>  </span>
+			    <label for="exampleInputPassword1">员工性别：</label>
+			    <span v-text="employee.sex"></span>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">员工用户名：</label>
+			    <span v-text="employee.username"> </span>
+			    <small id="emailHelp" class="form-text text-muted"></small>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">员工密码：	</label>
+			    <span v-text="employee.password">  </span>
 			  </div>
 			  <input type="hidden" name="no" value="">
 			  <router-link to="/employee/list" class="btn btn-primary">返回</router-link>
@@ -33,10 +42,30 @@
 </template>
 
 <script>
+	import axios from "axios";
 	export default{
 		name:"EmployeeView",
 		data(){
-			return{};
+			return{
+				employee:{
+					id:"",
+					name:"",
+					sex:"",
+					username:"",
+					password:""
+				}
+			};
+		},
+		created(){
+			let employeeId=this.$route.params.id;
+			this.getEmployee(employeeId);
+		},
+		methods:{
+			getEmployee(id){
+				axios.get("http://localhost:8081/employee/get?id="+id).then(result=>{
+					this.employee=result.data.result;
+				});
+			}
 		}
 	}
 </script>
