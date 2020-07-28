@@ -3,8 +3,13 @@ import VueRouter from 'vue-router'
 //引入路由管理组件
 //首页组件
 import HomeMain from "./../components/home/main.vue";
-import EmployeeLogin from "./../components/employee/login.vue";
+import EmployeeMain from "./../components/employee/main.vue";
 import EmployeeList from "./../components/employee/list.vue";
+import EmployeeLogin from "./../components/employee/login.vue";
+import EmployeeAdd from "./../components/employee/add.vue";
+import EmployeeDelete from "./../components/employee/delete.vue";
+import EmployeeModify from "./../components/employee/modify.vue";
+import EmployeeView from "./../components/employee/view.vue";
 import StorehouseMain from "./../components/storehouse/main.vue";
 
 
@@ -12,8 +17,15 @@ Vue.use(VueRouter)
 
 const routes = [
 	{path:"/", name:"homemain", component:HomeMain},
-	{path:"/employee/login", name:"employeelogin", component:EmployeeLogin},
-	{path:"/employee", name:"employeelist", component:EmployeeList},
+	{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
+		{path:"list",name:"employeelist", component:EmployeeList},
+		{path:"add",name:"employeeadd", component:EmployeeAdd},
+		{path:"modify",name:"employeemodify", component:EmployeeModify},
+		{path:"delete",name:"employeedelete", component:EmployeeDelete},
+		{path:"login",name:"employeelogin",component:EmployeeLogin},
+		{path:"view",name:"employeeview",component:EmployeeView},
+		{path:"", redirect:"list"},
+	]},
 	{path:"/storehouse", name:"storehousemain", component:StorehouseMain},
 ]
 
