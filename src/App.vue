@@ -36,6 +36,7 @@
 	        </div>
 	        <div class="pull-left info">
 	          <p>管理员</p>
+	          <router-link to="/employee/login"><i class="fa fa-circle text-success"></i>员工登录</router-link>
 	          <a href="#"><i class="fa fa-circle text-success"></i>注销</a>
 	        </div>
 	      </div>

@@ -38,10 +38,32 @@
 </template>
 
 <script>
+	import axios from "axios";
 	export default{
 		name:"EmployeeList",
 		data(){
-			return{};
+			return{
+				employeeList:[],
+				page:1,
+				rows:10,
+				count:0,
+				pageCount:0
+			};
+		},
+		created(){//当前组件的生命周期方法，组件创建后
+			this.getList();
+		},
+		methods:{
+			getList(){
+				axios.get("/http://localhost:8080/employee/list/all/page",{
+					params:{
+						rows=this.rows,
+						page=this.page
+					}
+				}).then(function(result)){
+					console.log(result);
+				};
+			}
 		}
 	}
 </script>
