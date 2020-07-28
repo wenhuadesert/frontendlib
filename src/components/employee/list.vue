@@ -25,7 +25,7 @@
 			            <td>{{em.username}}</td>
 			            <td>{{em.password}}</td>
 			            <td><router-link to="/employee/modify" class="btn btn-primary">修改</router-link>
-			            	<router-link to="/employee/delete" class="btn btn-danger">删除</router-link> 
+			            	<a href="#" v-on:click="deleteEmployee(em.id)" class="btn btn-danger">删除</a> 
 			            	<router-link to="/employee/view" class="btn btn-info">查看</router-link>  
 			            </td>
 			        </tr>
@@ -67,6 +67,17 @@
 					this.cout=result.count;
 					this.pageCount=result.pageCount;
 				});
+			},
+			deleteEmployee(id){
+				let checkresult=confirm("您确认要解雇该员工吗");
+				if (checkresult){
+					axios.post("http://localhost:8081/employee/delete",{id:id}).then(result=>{
+						alert(result.data.message);
+						if(result.data.status=="OK"){
+							this.getList();
+						}
+					});
+				}
 			}
 		}
 	}
