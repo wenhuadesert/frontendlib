@@ -14,11 +14,8 @@
           </div>
         </div>
         <div class="box-body">
-          	<form action="add.mvc" method = post v-on:submit="add()">
-			  <div class="form-group">
-			    <label for="exampleInputPassword1">员工编号</label>
-			    <input type="text" class="form-control" v-model="employee.id" required="">
-			  </div>
+          	<form method = post v-on:submit.prevent="add()">
+
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">员工姓名</label>
 			    <input type="text" class="form-control" v-model="employee.name" required="">
@@ -46,6 +43,7 @@
 </template>
 
 <script>
+	import axios from "axios";
 	export default{
 		name:"EmployeeAdd",
 		data(){
@@ -61,7 +59,14 @@
 		},
 		methods:{
 			add(){
-				
+				axios.post("http://localhost:8081/employee/add",this.employee).then(result=>{
+					if(result.data.status=="OK"){
+						alert(result.data.message);
+						this.$router.push("/employee/list");
+					}else{
+						alert(result.data.message);	
+					}
+				});
 			}
 		}
 	}
