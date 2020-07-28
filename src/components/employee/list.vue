@@ -57,12 +57,12 @@
 			getList(){
 				axios.get("/http://localhost:8080/employee/list/all/page",{
 					params:{
-						rows=this.rows,
-						page=this.page
+						rows:this.rows,
+						page:this.page
 					}
-				}).then(function(result)){
+				}).then(function(result){
 					console.log(result);
-				};
+				});
 			}
 		}
 	}
