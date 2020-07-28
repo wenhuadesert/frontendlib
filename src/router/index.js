@@ -40,9 +40,9 @@ const routes = [
 	{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
 		{path:"list",name:"employeelist", component:EmployeeList},
 		{path:"add",name:"employeeadd", component:EmployeeAdd},
-		{path:"modify",name:"employeemodify", component:EmployeeModify},
+		{path:"modify/:id",name:"employeemodify", component:EmployeeModify},
 		{path:"login",name:"employeelogin",component:EmployeeLogin},
-		{path:"view",name:"employeeview",component:EmployeeView},
+		{path:"view/:id",name:"employeeview",component:EmployeeView},
 		{path:"", redirect:"list"},
 	]},
 	{path:"/expresscompany", name:"storehousemain", component:EcMain,children:[

@@ -3,7 +3,7 @@
 	      <!-- Default box -->
 	      <div class="box">
 	        <div class="box-header with-border">
-	          <h3 class="box-title">Title</h3>
+	          <h3 class="box-title">员工列表</h3>
 	        </div>
 	        <div class="box-body">
 				<table class="table table-bordered">
@@ -24,9 +24,9 @@
 			            <td>{{em.sex}}</td>
 			            <td>{{em.username}}</td>
 			            <td>{{em.password}}</td>
-			            <td><router-link to="/employee/modify" class="btn btn-primary">修改</router-link>
+			            <td><router-link v-bind:to="'/employee/modify/'+em.id" class="btn btn-primary">修改</router-link>
 			            	<a href="#" v-on:click="deleteEmployee(em.id)" class="btn btn-danger">删除</a> 
-			            	<router-link to="/employee/view" class="btn btn-info">查看</router-link>  
+			            	<router-link v-bind:to="'/employee/view/'+em.id" class="btn btn-info">查看</router-link>  
 			            </td>
 			        </tr>
 			      </tbody>
