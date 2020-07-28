@@ -6,7 +6,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
+
 	//部门的主组件
 	export default {
 		name:"DepartmentMain",
@@ -20,12 +20,7 @@
 		},
 		methods:{
 			
-=======
-	export default{
-		name:"EmployeeMain",
-		data(){
-			return{};
->>>>>>> 91b87808ea086e8c5ed2824addbcf9bf455cef07
+
 		}
 	}
 </script>

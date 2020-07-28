@@ -5,16 +5,12 @@ import VueRouter from 'vue-router'
 import HomeMain from "./../components/home/main.vue";
 import EmployeeMain from "./../components/employee/main.vue";
 import EmployeeList from "./../components/employee/list.vue";
-<<<<<<< HEAD
-
-//仓库路由
-=======
 import EmployeeLogin from "./../components/employee/login.vue";
 import EmployeeAdd from "./../components/employee/add.vue";
 import EmployeeDelete from "./../components/employee/delete.vue";
 import EmployeeModify from "./../components/employee/modify.vue";
 import EmployeeView from "./../components/employee/view.vue";
->>>>>>> 91b87808ea086e8c5ed2824addbcf9bf455cef07
+//仓库路由
 import StorehouseMain from "./../components/storehouse/main.vue";
 import StorehouseList  from "./../components/storehouse/list.vue";
 import StorehouseAdd  from "./../components/storehouse/add.vue";
@@ -26,7 +22,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{path:"/", name:"homemain", component:HomeMain},
-<<<<<<< HEAD
+
 	{path:"/employee/login", name:"employeelogin", component:EmployeeLogin},
 	{path:"/employee", name:"employeelist", component:EmployeeList},
 	{path:"/storehouse", name:"storehousemain", component:StorehouseMain,children:[
@@ -35,8 +31,8 @@ const routes = [
 		{path:"modify/:storehouseId",name:"storehousemodify",component:StorehouseModify},
 		{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView},
 		{path:"", redirect: "list" }
-	]}
-=======
+	]},
+
 	{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
 		{path:"list",name:"employeelist", component:EmployeeList},
 		{path:"add",name:"employeeadd", component:EmployeeAdd},
@@ -47,7 +43,7 @@ const routes = [
 		{path:"", redirect:"list"},
 	]},
 	{path:"/storehouse", name:"storehousemain", component:StorehouseMain},
->>>>>>> 91b87808ea086e8c5ed2824addbcf9bf455cef07
+
 ]
 
 const router = new VueRouter({
