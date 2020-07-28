@@ -2,7 +2,7 @@
 <!-- Default box -->
 <div class="box">
 <div class="box-header with-border">
-  <h3 class="box-title">修改仓库</h3>
+  <h3 class="box-title">修改部门</h3>
 </div>
 <div class="box-body">
   <form  method="post" v-on:submit.prevent="modify()">
@@ -47,19 +47,18 @@
 		methods:{
 			getStorehouse(no){
 				
-				axios.get("http://localhost:8081/storehouse/get?no="+no).then(result=>{
+				axios.get("http://localhost:8200/storehouse/get?storehouseId="+no).then(result=>{
 					this.storehouse=result.data.result;
 				});
 			},
 			modify(){
-				axios.post("http://localhost:8081/storehouse/modify",this.storehouse).then(result=>{
+				axios.post("http://localhost:8200/storehouse/modify",this.storehouse).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
-						this.$router.push("/storehouse/list"); //编程方式跳转到仓库列表组件
+						this.$router.push("/storehouse/list"); //编程方式跳转到部门列表组件
 					}
 					else{
 						alert(result.data.message);
-						this.$router.push("/storehouse/list");
 					}
 				});
 			}

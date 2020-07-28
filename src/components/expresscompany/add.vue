@@ -41,7 +41,7 @@
 		},
 		methods:{
 			add(){
-				axios.post("http://localhost:8081/storehouse/add",this.storehouse).then(result=>{
+				axios.post("http://localhost:8200/storehouse/add",this.storehouse).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/storehouse/list"); //编程方式跳转到部门列表组件

@@ -16,6 +16,12 @@ import StorehouseList  from "./../components/storehouse/list.vue";
 import StorehouseAdd  from "./../components/storehouse/add.vue";
 import StorehouseModify  from "./../components/storehouse/modify.vue";
 import StorehouseView  from "./../components/storehouse/view.vue";
+//快递公司路由
+import EcMain from "./../components/expresscompany/main.vue";
+import EcList from "./../components/expresscompany/list.vue";
+import EcAdd from "./../components/expresscompany/add.vue";
+import EcModify from "./../components/expresscompany/modify.vue";
+import EcView from "./../components/expresscompany/view.vue";
 
 
 Vue.use(VueRouter)
@@ -39,7 +45,13 @@ const routes = [
 		{path:"view",name:"employeeview",component:EmployeeView},
 		{path:"", redirect:"list"},
 	]},
-	{path:"/storehouse", name:"storehousemain", component:StorehouseMain},
+	{path:"/expresscompany", name:"storehousemain", component:EcMain,children:[
+		{path:"list",name:"expresscompanylist",component:EcList},
+		{path:"add",name:"expresscompanyadd",component:EcAdd},
+		{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
+		{path:"view/:excid",name:"expresscompanyview",component:EcView},
+		{path:"", redirect: "list" }
+	]},
 
 ]
 
