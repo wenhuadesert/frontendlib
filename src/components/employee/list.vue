@@ -10,23 +10,25 @@
 				  <thead>
 			        <tr>
 			            <th scope="col">编号</th>
-			            <th scope="col">部名</th>
-			            <th scope="col">编码</th>
+			            <th scope="col">姓名</th>
+			            <th scope="col">性别</th>
+			            <th scope="col">员工账号</th>
+			            <th scope="col">员工密码</th>
 			            <th scope="col">操作</th>
 			        </tr>
 			      </thead>
 			      <tbody>
-			      <c:forEach items="${departmentList }" var="dm">
-			        <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
+			        <tr v-for="em in employeeList" v-bind:key="em.id">
+			            <td>{{em.id}}</td>
+			            <td>{{em.name}}</td>
+			            <td>{{em.sex}}</td>
+			            <td>{{em.username}}</td>
+			            <td>{{em.password}}</td>
 			            <td><a href="tomodify.mvc" class="btn btn-primary">修改</a>
 			            	<a href="todelete.mvc" class="btn btn-danger">删除</a> 
 			            	<a href="toview.mvc" class="btn btn-info">查看</a>  
 			            </td>
 			        </tr>
-			      </c:forEach>
 			      </tbody>
 			    </table>
 			    
@@ -39,7 +41,7 @@
 
 <script>
 	import axios from "axios";
-	export default{
+	export default {
 		name:"EmployeeList",
 		data(){
 			return{
@@ -60,8 +62,10 @@
 						rows:this.rows,
 						page:this.page
 					}
-				}).then(function(result){
-					console.log(result);
+				}).then(result=>{
+					this.employeeList=result.data.list;
+					this.cout=result.count;
+					this.pageCount=result.pageCount;
 				});
 			}
 		}
