@@ -12,13 +12,9 @@ Vue.use(VueRouter)
 
 const routes = [
 	{path:"/", name:"homemain", component:HomeMain},
-<<<<<<< HEAD
 	{path:"/employee/login", name:"employeelogin", component:EmployeeLogin},
-	{path:"/employee", name:"employeelist", component:EmployeeList}
-=======
 	{path:"/employee", name:"employeelist", component:EmployeeList},
 	{path:"/storehouse", name:"storehousemain", component:StorehouseMain},
->>>>>>> fca0192d4108dcda1a18a65b2eb65f143966ca8d
 ]
 
 const router = new VueRouter({
