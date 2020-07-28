@@ -52,12 +52,12 @@
 	          </a>
 	        </li>
 	        <li class="treeview">
-	          <a href="#">
-	            <i class="fa fa-dashboard"></i> <span>爱好管理</span>
+	          <router-link to="/storehouse">
+	            <i class="fa fa-dashboard"></i> <span>仓库管理</span>
 	            <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
 	            </span>
-	          </a>
+	          </router-link>
 	        </li>
 	        <li class="treeview">
 	          <router-link to="/employee">

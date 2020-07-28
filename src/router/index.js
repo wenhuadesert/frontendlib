@@ -4,12 +4,15 @@ import VueRouter from 'vue-router'
 //首页组件
 import HomeMain from "./../components/home/main.vue";
 import EmployeeList from "./../components/employee/list.vue";
+import StorehouseMain from "./../components/storehouse/main.vue";
+
 
 Vue.use(VueRouter)
 
 const routes = [
 	{path:"/", name:"homemain", component:HomeMain},
-	{path:"/employee", name:"employeelist", component:EmployeeList}
+	{path:"/employee", name:"employeelist", component:EmployeeList},
+	{path:"/storehouse", name:"storehousemain", component:StorehouseMain},
 ]
 
 const router = new VueRouter({
