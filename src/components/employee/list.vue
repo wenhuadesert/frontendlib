@@ -55,7 +55,7 @@
 		},
 		methods:{
 			getList(){
-				axios.get("/http://localhost:8080/employee/list/all/page",{
+				axios.get("http://localhost:8081/employee/list/all/page",{
 					params:{
 						rows:this.rows,
 						page:this.page
