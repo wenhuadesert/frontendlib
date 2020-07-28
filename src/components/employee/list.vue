@@ -24,15 +24,15 @@
 			            <td>{{em.sex}}</td>
 			            <td>{{em.username}}</td>
 			            <td>{{em.password}}</td>
-			            <td><a href="tomodify.mvc" class="btn btn-primary">修改</a>
-			            	<a href="todelete.mvc" class="btn btn-danger">删除</a> 
-			            	<a href="toview.mvc" class="btn btn-info">查看</a>  
+			            <td><router-link to="/employee/modify" class="btn btn-primary">修改</router-link>
+			            	<router-link to="/employee/delete" class="btn btn-danger">删除</router-link> 
+			            	<router-link to="/employee/view" class="btn btn-info">查看</router-link>  
 			            </td>
 			        </tr>
 			      </tbody>
 			    </table>
 			    
-	        	<a href="toadd.mvc" class="btn btn-default">增加新部门</a>
+	        	<router-link to="/employee/add" class="btn btn-default">增加新部门</router-link>
 	        </div>
 	        <!-- /.box-body -->
 	      </div>
