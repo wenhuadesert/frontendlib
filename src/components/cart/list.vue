@@ -19,17 +19,17 @@
 				</thead>
 				<tbody>
 
-					<tr v-for="client in clientList" v-bind:key="client.goods.goodsId">
-						<td>{{client.goods.goodsId}}</td>
-						<td>{{client.goods.goodsTag}}</td>
-						<td>{{client.goods.price}}</td>
+					<tr v-for="client in clientList" v-bind:key="client.goods[0].goodsId">
+						<td>{{client.goods[0].goodsId}}</td>
+						<td>{{client.goods[0].goodsTag}}</td>
+						<td>{{client.goods[0].price}}</td>
 						<td>{{client.cacount}}</td>
-						<td>{{client.goods.brand}}</td>
+						<td>{{client.goods[0].brand}}</td>
 						<td>
-							<router-link v-bind:to="'/goods/modify/'+client.goods.goodsId" class="btn btn-default">修改</router-link>
+							<router-link v-bind:to="'/goods/modify/'+client.goods[0].goodsId" class="btn btn-default">修改</router-link>
 
-							<a href="#" v-on:click="deleteGoods(client.goods.goodsId)" class="btn btn-danger">删除</a>
-							<router-link v-bind:to="'/goods/view/'+client.goods.goodsId" class="btn btn-default">查看</router-link>
+							<a href="#" v-on:click="deleteGoods(client.id, client.goods[0].goodsId)" class="btn btn-danger">删除</a>
+							<router-link v-bind:to="'/goods/view/'+client.goods[0].goodsId" class="btn btn-default">查看</router-link>
 						</td>
 					</tr>
 
@@ -61,8 +61,9 @@
 		},
 		methods: {
 			getList() {
-				this.axiosJson.get("/client/cart/list/all/page/1", {
+				this.axiosJson.get("/client/cart/list/all/page", {
 					params: {
+						id:1,
 						rows: this.rows,
 						page: this.page
 					}
@@ -72,20 +73,18 @@
 					this.pageCount = result.data.pageCount;
 				});
 			},
-			deleteGoods(no) {
+			deleteCart(id, goodsid) {
 				let checkresult = confirm("您确认要删除此商品么");
 				if (checkresult) {
-					console.log(no);
 					this.axiosJson.post("/client/cart/delete", {
 						id:(id),
-						goodsid:(goid)
+						goid:(goodsid)
 					}).then(result => {
 						alert(result.data.message);
 						if (result.data.status == "ok") {
 							this.getList();
 						}
 					});
-					console.log(no);
 				}
 
 
