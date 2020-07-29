@@ -47,7 +47,7 @@
 		methods:{
 			getStorehouse(no){
 				
-				this.axiosJSON.get("/storehouse/get?no="+no).then(result=>{
+				this.axiosJson.get("/storehouse/get?no="+no).then(result=>{
 					this.storehouse=result.data.result;
 				});
 			},

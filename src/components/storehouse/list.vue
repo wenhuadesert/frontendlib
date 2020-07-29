@@ -51,7 +51,7 @@
 		},
 		methods:{
 			getList(){
-				this.axiosJSON.get("/storehouse/list/all/page",{
+				this.axiosJson.get("/storehouse/list/all/page",{
 					params:{
 						rows:this.rows,
 						page:this.page
