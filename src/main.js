@@ -5,12 +5,12 @@ import store from './store'
 import axios from 'axios'
 
 const axiosJson = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: 'http://localhost:8081/',
   timeout: 2000
 });
 
 const axiosUpload = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: 'http://localhost:8081/',
   timeout: 3000,
   headers: {'Content-Type': 'multipart/form-data'}
 });

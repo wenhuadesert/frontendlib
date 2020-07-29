@@ -43,7 +43,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default{
 		name:"EmployeeAdd",
 		data(){
@@ -59,7 +59,7 @@
 		},
 		methods:{
 			add(){
-				axios.post("http://localhost:8081/employee/add",this.employee).then(result=>{
+				this.axiosJSON.post("http://localhost:8081/employee/add",this.employee).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/employee/list");
