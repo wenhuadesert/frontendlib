@@ -45,7 +45,6 @@
 			submitAdd(){
 				let formData = new FormData();
 				formData.append("goodsPhoto",this.goodsPhoto);
-				formData.append("no",this.no);
 				this.axiosUpload.post("/goods/updatephoto",formData,this.no).then(result => {
 					if (result.data.status == "ok") {
 						alert(result.data.message);
