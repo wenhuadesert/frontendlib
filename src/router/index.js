@@ -41,6 +41,8 @@ import GoodsAdd from "./../components/goods/add.vue"
 import GoodsModify from "./../components/goods/modify.vue"
 import GoodsView from "./../components/goods/view.vue"
 import GoodsAddPhoto from "./../components/goods/addphoto.vue"
+import GoodsClientList from "./../components/goods/clientgoodslist.vue"
+import GoodsClientView from "./../components/goods/clientgoodsview.vue"
 //购物车路由
 import CartList from "./../components/cart/list.vue"
 import CartMain from "./../components/cart/main.vue"
@@ -58,6 +60,10 @@ const routes = [
 		{path:"client", name:"clientmain", component:ClientMain, children:[
 			{path:"modify/:cliid",name:"clientselfmodify", component:ClientSelfModify},
 			{path:"view/:cliid",name:"clientselfview",component:ClientSelfView},
+		]},
+		{path:"goods", name:"goodsmain", component:GoodsMain,children:[
+			{path:"list",name:"goodsclientlist",component:GoodsClientList},
+			{path:"view/:no",name:"goodsclientview",component:GoodsClientView,props:true},
 		]},
 		{path:"/", name:"homemain", component:HomeMain},
 		
