@@ -37,7 +37,7 @@
 					<label for="exampleInputPassword1">品类编号</label>
 					<span>	{{goods.category.categoryId}}</span>
 				</div>
-				<router-link to="/goods/list" class="btn btn-default">返回</router-link>
+				<router-link to="/employee/goods/list" class="btn btn-default">返回</router-link>
 			</form>
 
 		</div>

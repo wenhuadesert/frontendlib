@@ -37,7 +37,7 @@
 
 
 				<button type="submit" class="btn btn-primary">提交</button>
-				<router-link to="/goods/list" class="btn btn-default">取消</router-link>
+				<router-link to="/employee/goods/list" class="btn btn-default">取消</router-link>
 			</form>
 
 		</div>
@@ -102,7 +102,7 @@
 					if (result.data.status == "ok") {
 						alert(result.data.message);
 						//this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
-						this.$router.push("/goods/add/photo/"+this.no);
+						this.$router.push("/employee/goods/add/photo/"+this.no);
 					} else {
 						alert(result.data.message);
 					}

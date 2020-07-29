@@ -73,7 +73,7 @@
 					if (result.data.status == "ok") {
 						alert(result.data.message);
 						console.log(result.data.intResult);
-						this.$router.push("/goods/add/photo/"+result.data.intResult); //编程方式跳转到部门列表组件
+						this.$router.push("/employee/goods/add/photo/"+result.data.intResult); //编程方式跳转到部门列表组件
 						
 						
 					} else {

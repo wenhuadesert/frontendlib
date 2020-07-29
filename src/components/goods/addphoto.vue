@@ -49,7 +49,7 @@
 				this.axiosUpload.post("/goods/updatephoto",formData).then(result => {
 					if (result.data.status == "ok") {
 						alert(result.data.message);
-						this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
+						this.$router.push("/employee/goods/list"); //编程方式跳转到部门列表组件
 					} else {
 						alert(result.data.message);
 					}
