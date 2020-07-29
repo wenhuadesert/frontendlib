@@ -33,7 +33,7 @@
 			    <span v-text="employee.password">  </span>
 			  </div>
 			  <input type="hidden" name="no" value="">
-			  <router-link to="/employee/list" class="btn btn-primary">返回</router-link>
+			  <router-link to="/employee/employee/list" class="btn btn-primary">返回</router-link>
 			</form>
         </div>
         <!-- /.box-body -->
@@ -57,7 +57,7 @@
 			};
 		},
 		created(){
-			let employeeId=this.$route.params.id;
+			let employeeId=this.$route.params.empid;
 			this.getEmployee(employeeId);
 		},
 		methods:{

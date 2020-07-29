@@ -39,7 +39,7 @@
 			  </div>
 			  <input type="hidden" name="no" value="">
 			  <button type="submit" class="btn btn-primary">修改</button>
-			  <router-link to="/client/list" class="btn btn-default">取消</router-link>
+			  <router-link to="/employee/client/list" class="btn btn-default">取消</router-link>
 			</form>
         </div>
         <!-- /.box-body -->
@@ -64,7 +64,7 @@
 			};
 		},
 		created(){
-			let clientId=this.$route.params.id;
+			let clientId=this.$route.params.cliid;
 			this.getClient(clientId);
 		},
 		methods:{
@@ -75,9 +75,9 @@
 			},
 			modify(){
 				this.axiosJson.post("/client/modify",this.client).then(result=>{
-					if(result.data.status=="OK"){
+					if(result.data.status=="ok"){
 						alert(result.data.message);
-						this.$router.push("/client/list");
+						this.$router.push("/employee/client/list");
 					}else{
 						alert(result.data.message);	
 					}

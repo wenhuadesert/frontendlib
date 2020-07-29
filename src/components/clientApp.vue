@@ -84,8 +84,9 @@
 	        <small>子功能</small>
 	      </h1>
 	      <ol class="breadcrumb">
-	        <li><router-link to="/"><i class="fa fa-dashboard"></i> 首页</router-link></li>
-	        <li><a href="#"></a></li>
+	        <li><router-link to="/employee"><i class="fa fa-dashboard"></i> 员工首页</router-link></li>
+	        <li><router-link to="/client"><i class="fa fa-dashboard"></i> 客户首页</router-link></li>
+
 	        <li class="active"></li>
 	      </ol>
 	    </section>

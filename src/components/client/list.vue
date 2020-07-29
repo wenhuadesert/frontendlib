@@ -26,15 +26,15 @@
 			            <td>{{cm.address}}</td>
 			            <td>{{cm.username}}</td>
 			            <td>{{cm.password}}</td>
-			            <td><router-link v-bind:to="'/client/modify/'+cm.id" class="btn btn-primary">修改</router-link>
+			            <td><router-link v-bind:to="'/employee/client/modify/'+cm.id" class="btn btn-primary">修改</router-link>
 			            	<a href="#" v-on:click="deleteClient(cm.id)" class="btn btn-danger">删除</a> 
-			            	<router-link v-bind:to="'/client/view/'+cm.id" class="btn btn-info">查看</router-link>  
+			            	<router-link v-bind:to="'/employee/client/view/'+cm.id" class="btn btn-info">查看</router-link>  
 			            </td>
 			        </tr>
 			      </tbody>
 			    </table>
 			    
-	        	<router-link to="/client/add" class="btn btn-default">增加新部门</router-link>
+	        	<router-link to="/employee/client/add" class="btn btn-default">增加新部门</router-link>
 	        </div>
 	        <!-- /.box-body -->
 	      </div>
@@ -75,7 +75,7 @@
 				if (checkresult){
 					this.axiosJson.post("/client/delete",{id:id}).then(result=>{
 						alert(result.data.message);
-						if(result.data.status=="OK"){
+						if(result.data.status=="ok"){
 							this.getList();
 						}
 					});

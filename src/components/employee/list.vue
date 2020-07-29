@@ -24,15 +24,15 @@
 			            <td>{{em.sex}}</td>
 			            <td>{{em.username}}</td>
 			            <td>{{em.password}}</td>
-			            <td><router-link v-bind:to="'/employee/modify/'+em.id" class="btn btn-primary">修改</router-link>
+			            <td><router-link v-bind:to="'/employee/employee/modify/'+em.id" class="btn btn-primary">修改</router-link>
 			            	<a href="#" v-on:click="deleteEmployee(em.id)" class="btn btn-danger">删除</a> 
-			            	<router-link v-bind:to="'/employee/view/'+em.id" class="btn btn-info">查看</router-link>  
+			            	<router-link v-bind:to="'/employee/employee/view/'+em.id" class="btn btn-info">查看</router-link>  
 			            </td>
 			        </tr>
 			      </tbody>
 			    </table>
 			    
-	        	<router-link to="/employee/add" class="btn btn-default">增加新部门</router-link>
+	        	<router-link to="/employee/employee/add" class="btn btn-default">增加新部门</router-link>
 	        </div>
 	        <!-- /.box-body -->
 	      </div>
@@ -73,7 +73,7 @@
 				if (checkresult){
 					this.axiosJson.post("/employee/delete",{id:id}).then(result=>{
 						alert(result.data.message);
-						if(result.data.status=="OK"){
+						if(result.data.status=="ok"){
 							this.getList();
 						}
 					});

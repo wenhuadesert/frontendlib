@@ -34,7 +34,7 @@
 			    <input type="text" class="form-control" v-model="employee.password" required="">
 			  </div>
 			  <button type="submit" class="btn btn-primary">增加</button>
-			  <router-link to="/employee/list" class="btn btn-default">取消</router-link>
+			  <router-link to="/employee/employee/list" class="btn btn-default">取消</router-link>
 			</form>
         </div>
         <!-- /.box-body -->
@@ -60,7 +60,7 @@
 		methods:{
 			add(){
 				this.axiosJson.post("/employee/add",this.employee).then(result=>{
-					if(result.data.status=="OK"){
+					if(result.data.status=="ok"){
 						alert(result.data.message);
 						this.$router.push("/employee/list");
 					}else{

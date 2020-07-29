@@ -45,15 +45,15 @@
 	      <ul class="sidebar-menu" data-widget="tree">
 	        <li class="header">系统功能选择</li>
 	        <li class="treeview">
-	          <a href="#">
-	            <i class="fa fa-dashboard"></i> <span>购物车</span>
+	          <router-link to="/employee/expresscompany">
+	            <i class="fa fa-dashboard"></i> <span>快递公司管理</span>
 	            <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
 	            </span>
-	          </a>
+	          </router-link>
 	        </li>
 	        <li class="treeview">
-	          <router-link to="/storehouse">
+	          <router-link to="/employee/storehouse">
 	            <i class="fa fa-dashboard"></i> <span>仓库管理</span>
 	            <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
@@ -61,8 +61,16 @@
 	          </router-link>
 	        </li>
 	        <li class="treeview">
-	          <router-link to="/employee">
+	          <router-link to="/employee/employee">
 	            <i class="fa fa-dashboard"></i> <span>员工管理</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </router-link>
+	        </li>
+	        <li class="treeview">
+	          <router-link to="/employee/client">
+	            <i class="fa fa-dashboard"></i> <span>客户管理</span>
 	            <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
 	            </span>
@@ -84,8 +92,9 @@
 	        <small>子功能</small>
 	      </h1>
 	      <ol class="breadcrumb">
-	        <li><router-link to="/"><i class="fa fa-dashboard"></i> 首页</router-link></li>
-	        <li><a href="#"></a></li>
+	        <li><router-link to="/employee"><i class="fa fa-dashboard"></i> 员工首页</router-link></li>
+	        <li><router-link to="/client"><i class="fa fa-dashboard"></i> 客户首页</router-link></li>
+
 	        <li class="active"></li>
 	      </ol>
 	    </section>

@@ -35,7 +35,7 @@
 			  </div>
 			  <input type="hidden" name="no" value="">
 			  <button type="submit" class="btn btn-primary">修改</button>
-			  <router-link to="/employee/list" class="btn btn-default">取消</router-link>
+			  <router-link to="/employee/employee/list" class="btn btn-default">取消</router-link>
 			</form>
         </div>
         <!-- /.box-body -->
@@ -59,7 +59,7 @@
 			};
 		},
 		created(){
-			let employeeId=this.$route.params.id;
+			let employeeId=this.$route.params.empid;
 			this.getEmployee(employeeId);
 		},
 		methods:{
@@ -70,9 +70,9 @@
 			},
 			modify(){
 				this.axiosJson.post("/employee/modify",this.employee).then(result=>{
-					if(result.data.status=="OK"){
+					if(result.data.status=="ok"){
 						alert(result.data.message);
-						this.$router.push("/employee/list");
+						this.$router.push("/employee/employee/list");
 					}else{
 						alert(result.data.message);	
 					}

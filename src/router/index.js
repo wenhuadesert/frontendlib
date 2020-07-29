@@ -68,17 +68,17 @@ const routes = [
 		{path:"employee", name:"employeemain", component:EmployeeMain, children:[
 			{path:"list",name:"employeelist", component:EmployeeList},
 			{path:"add",name:"employeeadd", component:EmployeeAdd},
-			{path:"modify/:id",name:"employeemodify", component:EmployeeModify},
+			{path:"modify/:empid",name:"employeemodify", component:EmployeeModify},
 			{path:"login",name:"employeelogin",component:EmployeeLogin},
-			{path:"view/:id",name:"employeeview",component:EmployeeView},
+			{path:"view/:empid",name:"employeeview",component:EmployeeView},
 			{path:"", redirect:"list"},
 		]},
 		{path:"client", name:"clientmain", component:ClientMain, children:[
 			{path:"list",name:"clientlist", component:ClientList},
 			{path:"add",name:"clientadd", component:ClientAdd},
-			{path:"modify/:id",name:"clientmodify", component:ClientModify},
+			{path:"modify/:cliid",name:"clientmodify", component:ClientModify},
 			{path:"login",name:"clientlogin",component:ClientLogin},
-			{path:"view/:id",name:"clientview",component:ClientView},
+			{path:"view/:cliid",name:"clientview",component:ClientView},
 			{path:"", redirect:"list"},
 		]},
 		{path:"expresscompany", name:"storehousemain", component:EcMain,children:[

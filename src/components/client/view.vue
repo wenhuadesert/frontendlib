@@ -37,7 +37,7 @@
 			    <span v-text="client.password">  </span>
 			  </div>
 			  <input type="hidden" name="no" value="">
-			  <router-link to="/client/list" class="btn btn-primary">返回</router-link>
+			  <router-link to="/employee/client/list" class="btn btn-primary">返回</router-link>
 			</form>
         </div>
         <!-- /.box-body -->
@@ -62,7 +62,7 @@
 			};
 		},
 		created(){
-			let clientId=this.$route.params.id;
+			let clientId=this.$route.params.cliid;
 			this.getClient(clientId);
 		},
 		methods:{
