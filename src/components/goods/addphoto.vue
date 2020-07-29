@@ -45,7 +45,8 @@
 			submitAdd(){
 				let formData = new FormData();
 				formData.append("goodsPhoto",this.goodsPhoto);
-				this.axiosUpload.post("/goods/updatephoto",formData,this.no).then(result => {
+				formData.append("no",this.no);
+				this.axiosUpload.post("/goods/updatephoto",formData).then(result => {
 					if (result.data.status == "ok") {
 						alert(result.data.message);
 						this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
