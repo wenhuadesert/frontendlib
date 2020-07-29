@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 //引入路由管理组件
+//子App组件
+import EmployeeApp from "./../components/employeeApp.vue";
+import ClientApp from "./../components/clientApp.vue";
 //首页组件
 import HomeMain from "./../components/home/main.vue";
 //员工组件路由
-import EmployeeMain from "./../components/employee/main.vue";
 import EmployeeList from "./../components/employee/list.vue";
 import EmployeeLogin from "./../components/employee/login.vue";
 import EmployeeAdd from "./../components/employee/add.vue";
 import EmployeeModify from "./../components/employee/modify.vue";
 import EmployeeView from "./../components/employee/view.vue";
+import EmployeeMain from "./../components/employee/main.vue";
 //仓库路由
 import StorehouseMain from "./../components/storehouse/main.vue";
 import StorehouseList  from "./../components/storehouse/list.vue";
@@ -32,37 +35,47 @@ import GoodsView from "./../components/goods/view.vue"
 Vue.use(VueRouter)
 
 const routes = [
-	{path:"/", name:"homemain", component:HomeMain},
+	//{path:"/", name:"homeapp", component:HomeApp},
+	
+	
+	{path:"/client", name:"clientapp", component:ClientApp, children:[
+		{path:"/", name:"homemain", component:HomeMain},
+		
+	]},
+	
+	{path:"/employee", name:"employeeapp", component:EmployeeApp, children:[
+		{path:"/storehouse", name:"storehousemain", component:StorehouseMain,children:[
+			{path:"list",name:"storehouselist",component:StorehouseList},
+			{path:"add",name:"storehouseadd",component:StorehouseAdd},
+			{path:"modify/:storehouseId",name:"storehousemodify",component:StorehouseModify},
+			{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView,props:true},
+			{path:"", redirect: "list" }
+		]},
+		{path:"/goods", name:"goodsmain", component:GoodsMain,children:[
+			{path:"list",name:"goodslist",component:GoodsList},
+			{path:"add",name:"goodsadd",component:GoodsAdd},
+			{path:"modify/:no",name:"goodsmodify",component:GoodsModify,props:true},
+			{path:"view/:no",name:"goodsview",component:GoodsView,props:true},
+			{path:"",redirect:"list"},
+		]},
+		{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
+			{path:"list",name:"employeelist", component:EmployeeList},
+			{path:"add",name:"employeeadd", component:EmployeeAdd},
+			{path:"modify/:id",name:"employeemodify", component:EmployeeModify},
+			{path:"login",name:"employeelogin",component:EmployeeLogin},
+			{path:"view/:id",name:"employeeview",component:EmployeeView},
+			{path:"", redirect:"list"},
+		]},
+		{path:"/expresscompany", name:"storehousemain", component:EcMain,children:[
+			{path:"list",name:"expresscompanylist",component:EcList},
+			{path:"add",name:"expresscompanyadd",component:EcAdd},
+			{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
+			{path:"view/:excid",name:"expresscompanyview",component:EcView},
+			{path:"", redirect: "list" }
+		]}
+		
+	]}
 
-	{path:"/storehouse", name:"storehousemain", component:StorehouseMain,children:[
-		{path:"list",name:"storehouselist",component:StorehouseList},
-		{path:"add",name:"storehouseadd",component:StorehouseAdd},
-		{path:"modify/:storehouseId",name:"storehousemodify",component:StorehouseModify},
-		{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView,props:true},
-		{path:"", redirect: "list" }
-	]},
-	{path:"/goods", name:"goodsmain", component:GoodsMain,children:[
-		{path:"list",name:"goodslist",component:GoodsList},
-		{path:"add",name:"goodsadd",component:GoodsAdd},
-		{path:"modify/:no",name:"goodsmodify",component:GoodsModify,props:true},
-		{path:"view/:no",name:"goodsview",component:GoodsView,props:true},
-		{path:"",redirect:"list"},
-	]},
-	{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
-		{path:"list",name:"employeelist", component:EmployeeList},
-		{path:"add",name:"employeeadd", component:EmployeeAdd},
-		{path:"modify/:id",name:"employeemodify", component:EmployeeModify},
-		{path:"login",name:"employeelogin",component:EmployeeLogin},
-		{path:"view/:id",name:"employeeview",component:EmployeeView},
-		{path:"", redirect:"list"},
-	]},
-	{path:"/expresscompany", name:"storehousemain", component:EcMain,children:[
-		{path:"list",name:"expresscompanylist",component:EcList},
-		{path:"add",name:"expresscompanyadd",component:EcAdd},
-		{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
-		{path:"view/:excid",name:"expresscompanyview",component:EcView},
-		{path:"", redirect: "list" }
-	]},
 
 ]
 
