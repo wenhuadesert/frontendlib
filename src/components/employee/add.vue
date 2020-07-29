@@ -59,7 +59,7 @@
 		},
 		methods:{
 			add(){
-				this.axiosJSON.post("http://localhost:8081/employee/add",this.employee).then(result=>{
+				this.axiosJson.post("/employee/add",this.employee).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/employee/list");

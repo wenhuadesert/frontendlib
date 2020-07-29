@@ -44,7 +44,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default{
 		name:"EmployeeModify",
 		data(){
@@ -64,12 +64,12 @@
 		},
 		methods:{
 			getEmployee(id){
-				axios.get("http://localhost:8081/employee/get?id="+id).then(result=>{
+				this.axiosJson.get("/employee/get?id="+id).then(result=>{
 					this.employee=result.data.result;
 				});
 			},
 			modify(){
-				axios.post("http://localhost:8081/employee/modify",this.employee).then(result=>{
+				this.axiosJson.post("/employee/modify",this.employee).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/employee/list");

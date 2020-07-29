@@ -42,7 +42,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default{
 		name:"EmployeeView",
 		data(){
@@ -62,7 +62,7 @@
 		},
 		methods:{
 			getEmployee(id){
-				axios.get("http://localhost:8081/employee/get?id="+id).then(result=>{
+				this.axiosJson.get("/employee/get?id="+id).then(result=>{
 					this.employee=result.data.result;
 				});
 			}
