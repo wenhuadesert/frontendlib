@@ -101,7 +101,8 @@
 				this.axiosJson.post("/goods/modify", this.goods).then(result => {
 					if (result.data.status == "ok") {
 						alert(result.data.message);
-						this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
+						//this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
+						this.$router.push("/goods/add/photo/"+this.no);
 					} else {
 						alert(result.data.message);
 					}
