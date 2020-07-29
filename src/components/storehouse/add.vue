@@ -44,10 +44,12 @@
 				this.axiosJson.post("/storehouse/add",this.storehouse).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
-						this.$router.push("/storehouse/list"); //编程方式跳转到部门列表组件
+						this.$router.push("/employee/storehouse/list"); //编程方式跳转到仓库列表组件
 					}
 					else{
 						alert(result.data.message);
+						this.$router.push("/employee/storehouse/list");
+						
 					}
 				});
 			}

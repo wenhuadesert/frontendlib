@@ -27,6 +27,21 @@
 			  </tbody>
 			</table>
 		</div>
+		<div class="row">
+			<div class="col-md-6">
+			个数:<span>{{count}}</span>	页数:<span>{{page}}</span>/<span>{{pageCount}}</span>
+			</div>
+			<div class="col-md-6 text-right">
+				<nav>
+				  <ul class="pagination justify-content-end">
+					<li class="page-item"><a class="page-link" href="#" v-on:click="toFirstPage()">首页</a></li>
+					<li class="page-item"><a class="page-link" href="#" v-on:click="toPreviousPage()">上页</a></li>
+					<li class="page-item"><a class="page-link" href="#" v-on:click="toNextPage()">下页</a></li>
+					<li class="page-item"><a class="page-link" href="#" v-on:click="toLastPage()">末页</a></li>
+				  </ul>
+				</nav>
+			</div>
+		</div> 
 		<!-- /.box-body -->
 		<router-link to="/employee/storehouse/add" class="btn btn-default">增加仓库</router-link>
 	</div>
@@ -41,7 +56,7 @@
 			return {
 				storehouseList:[],
 				page:1,
-				rows:10,
+				rows:5,
 				count:0,
 				pageCount:0
 			};
@@ -72,8 +87,27 @@
 						}
 					});
 				}
+			},
+			toFirstPage(){
+				this.page=1;
+				this.getList();
+			},
+			toPreviousPage(){
+				if(this.page>1){
+					this.page--;
+					this.getList();
+				}
 				
-				
+			},
+			toNextPage(){
+				if(this.page<this.pageCount){
+					this.page++;
+					this.getList();
+				}
+			},
+			toLastPage(){
+				this.page=this.pageCount;
+				this.getList();
 			}
 		}
 	}
