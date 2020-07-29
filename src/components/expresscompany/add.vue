@@ -34,8 +34,9 @@
 		data(){
 			return {
 				expresscompany:{
-					excid:"",
+					
 					excname:"",
+					excid:"",
 					excphone:""
 				}
 			};

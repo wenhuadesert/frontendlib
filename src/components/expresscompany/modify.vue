@@ -16,7 +16,7 @@
 		<input type="text" class="form-control" v-model="expresscomapny.phone">
 	  </div>
 	  <button type="submit" class="btn btn-primary">提交</button>
-	 <router-link to="/employee/expresscomapny/list" class="btn btn-default">取消</router-link>
+	 <router-link to="/employee/expresscompany/list" class="btn btn-default">取消</router-link>
 	</form>
 
 </div>

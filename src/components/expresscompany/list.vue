@@ -15,9 +15,9 @@
 			  </thead>
 			  <tbody>
 				<tr v-for="ec in expresscompanyList" v-bind:key="ec.excid">
-				  <td>{{ec.excid}}</td>
-				  <td>{{ec.excname}}</td>
-				  <td>{{ec.excphone}}</td>
+				  <td>{{ec.id}}</td>
+				  <td>{{ec.name}}</td>
+				  <td>{{ec.telephone}}</td>
 					<td>
 					  <router-link v-bind:to="'/employee/expresscompany/modify/'+ec.excid" class="btn btn-default">修改</router-link>
 					  <a href="#" v-on:click="deleteExpresscompany(ec.excid)"  class="btn btn-danger">删除</a> 
@@ -69,6 +69,7 @@
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();
+							
 						}
 					});
 				}

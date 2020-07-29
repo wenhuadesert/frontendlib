@@ -84,6 +84,7 @@
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();
+							this.$router.push("/storehouse/list");
 						}
 					});
 				}
