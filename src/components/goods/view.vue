@@ -71,14 +71,22 @@
 				}
 			};
 		},
+		props: {
+			no: {
+				required: true
+			}
+		},
 		created() { //组件的创建生命周期函数
 			//console.log("???")
-			let goodsNo = this.$route.params.no;
-			this.getGoods(goodsNo)
+			this.getGoods()
 		},
 		methods: {
-			getGoods(no) {
-				this.axiosJson.get("/goods/get?no=" + no).then(result => {
+			getGoods() {
+				this.axiosJson.get("/goods/get" ,{
+					params:{
+						no:this.no
+					}
+				}).then(result => {
 					this.goods = result.data.result;
 				});
 			}
