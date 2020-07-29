@@ -53,8 +53,8 @@
 	          </a>
 	        </li>
 	        <li class="treeview">
-	          <router-link to="/storehouse">
-	            <i class="fa fa-dashboard"></i> <span>仓库管理</span>
+	          <router-link to="/client/client/view/1">
+	            <i class="fa fa-dashboard"></i> <span>个人信息</span>
 	            <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
 	            </span>

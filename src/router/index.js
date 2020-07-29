@@ -19,6 +19,8 @@ import ClientLogin from "./../components/client/login.vue";
 import ClientAdd from "./../components/client/add.vue";
 import ClientModify from "./../components/client/modify.vue";
 import ClientView from "./../components/client/view.vue";
+import ClientSelfModify from "./../components/client/selfModify.vue";
+import ClientSelfView from "./../components/client/selfView.vue";
 import ClientMain from "./../components/client/main.vue";
 //仓库路由
 import StorehouseMain from "./../components/storehouse/main.vue";
@@ -46,6 +48,10 @@ const routes = [
 	
 	
 	{path:"/client", name:"clientapp", component:ClientApp, children:[
+		{path:"client", name:"clientmain", component:ClientMain, children:[
+			{path:"modify/:cliid",name:"clientselfmodify", component:ClientSelfModify},
+			{path:"view/:cliid",name:"clientselfview",component:ClientSelfView},
+		]},
 		{path:"/", name:"homemain", component:HomeMain},
 		
 	]},
