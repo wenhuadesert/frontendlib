@@ -21,7 +21,7 @@
 					<td>
 					  <router-link v-bind:to="'/storehouse/modify/'+st.storehouseId" class="btn btn-default">修改</router-link>
 					  <a href="#" v-on:click="deleteStorehouse(st.storehouseId)"  class="btn btn-danger">删除</a> 
-					  <router-link to="/storehouse/view" class="btn btn-default">查看</router-link>
+					  <router-link v-bind:to="'/storehouse/view/'+st.storehouseId" class="btn btn-default">查看</router-link>
 					</td>
 				</tr>
 			  </tbody>

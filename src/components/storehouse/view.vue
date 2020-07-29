@@ -2,22 +2,26 @@
 <!-- Default box -->
 <div class="box">
 <div class="box-header with-border">
-  <h3 class="box-title">查看部门</h3>
+  <h3 class="box-title">查看仓库</h3>
 </div>
 <div class="box-body">
-	<form  method="post" >
-	  <div class="form-group">
-		<label for="exampleInputEmail1">部门编码</label>
-		<span></span>
+	<table class="table table-bordered">
+	  <thead>
+		<tr>
+		  <th scope="col">编号</th>
+		  <th scope="col">地址</th>
+		  <th scope="col">容量</th>
+		</tr>
+	  </thead>
+	  <tbody>
 		
-	  </div>
-	  <div class="form-group">
-		<label for="exampleInputPassword1">部门名称</label>
-		<span></span>
-	  </div>
-	  <router-link to="/department/list" class="btn btn-default">返回</router-link>
-	</form>
-
+		  <td>{{storehouse.storehouseId}}</td>
+		  <td>{{storehouse.address}}</td>
+		  <td>{{storehouse.capacity}}</td>
+			
+	  </tbody>
+	</table>
+   <router-link to="/storehouse/list" class="btn btn-default">返回</router-link>
 </div>
 <!-- /.box-body -->
 </div>
@@ -27,19 +31,29 @@
 <script>
 	//部门查看组件
 	export default {
-		name:"DepartmentView",
+		name:"StorhouseView",
 		data(){
 			return {
-				department:{}
+				storehouse:{
+					address:"",
+					capacity:"",
+					storehouseId:0
+				}
 			};
 		},
 		created(){ //组件的创建生命周期函数
+			let storehouseNo=this.$route.params.storehouseId;
+			this.getStorehouse(storehouseNo);
 			
 		},
 		methods:{
-			getDepartment(){
+			getStorehouse(no){
 				
+				this.axiosJson.get("/storehouse/get?no="+no).then(result=>{
+					this.storehouse=result.data.result;
+				});
 			}
+			
 		}
 	}
 </script>
