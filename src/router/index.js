@@ -41,7 +41,9 @@ import GoodsAdd from "./../components/goods/add.vue"
 import GoodsModify from "./../components/goods/modify.vue"
 import GoodsView from "./../components/goods/view.vue"
 import GoodsAddPhoto from "./../components/goods/addphoto.vue"
-
+//购物车路由
+import CartList from "./../components/cart/list.vue"
+import CartMain from "./../components/cart/main.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -49,6 +51,10 @@ const routes = [
 	
 	
 	{path:"/client", name:"clientapp", component:ClientApp, children:[
+		{path:"cart", name:"cartmain", component:CartMain, children:[
+			{path:"list/:cliid",name:"cartlist", component:CartList},
+			{path:"", redirect: "list/1" }
+		]},
 		{path:"client", name:"clientmain", component:ClientMain, children:[
 			{path:"modify/:cliid",name:"clientselfmodify", component:ClientSelfModify},
 			{path:"view/:cliid",name:"clientselfview",component:ClientSelfView},
