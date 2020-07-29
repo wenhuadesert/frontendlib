@@ -6,7 +6,7 @@
 		</div>
 		<div class="box-body">
 			<form method="post" v-on:submit.prevent="modify()">
-				
+
 				<div class="form-group">
 					<label for="exampleInputEmail1">商品名称</label>
 					<input type="text" class="form-control" v-model="goods.goodsTag" required>
@@ -24,22 +24,22 @@
 					<label for="exampleInputPassword1">品牌</label>
 					<input type="text" class="form-control" v-model="goods.brand" required>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="exampleInputPassword1">仓库编号</label>
-					<input type="text" class="form-control" v-model="goods.storehouse.storehouseId" >
+					<input type="text" class="form-control" v-model="goods.storehouse.storehouseId">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">品类编号</label>
-					<input type="text" class="form-control" v-model="goods.category.categoryId" >
+					<input type="text" class="form-control" v-model="goods.category.categoryId">
 				</div>
-				
-				
-				
+
+
+
 				<button type="submit" class="btn btn-primary">提交</button>
 				<router-link to="/goods/list" class="btn btn-default">取消</router-link>
 			</form>
-	
+
 		</div>
 		<!-- /.box-body -->
 	</div>
@@ -58,34 +58,44 @@
 					goodsTag: "",
 					price: 0,
 					goodsStock: 0,
-					brand:"",
-					
-					storehouse:{
-						storehouseId:0,
+					brand: "",
+
+					storehouse: {
+						storehouseId: 0,
 						address: "",
 						capacity: 0
 					},
-					category:{
-						categoryId:0,
+					category: {
+						categoryId: 0,
 						categoryTag: ""
 					}
-					
+
 				}
 			};
 		},
+		props: {
+			no: {
+				required: true
+			}
+		},
 		created() { //组件的创建生命周期函数
-			let goodsNo = this.$route.params.no;
-			this.getGoods(goodsNo);
-	
+			this.getGoods();
+
 		},
 		methods: {
-			getGoods(no) {
-	
-				this.axiosJson.get("/goods/get?no=" + no).then(result => {
+			getGoods() {
+
+				this.axiosJson.get("/goods/get", {
+						params:{
+							no:this.no
+						}
+					}
+
+				).then(result => {
 					this.goods = result.data.result;
 					console.log(this.goods.storehouse.storehouseId)
 				});
-				
+
 			},
 			modify() {
 				this.axiosJson.post("/goods/modify", this.goods).then(result => {
