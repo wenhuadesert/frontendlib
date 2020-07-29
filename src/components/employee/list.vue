@@ -40,7 +40,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name:"EmployeeList",
 		data(){
@@ -57,7 +57,7 @@
 		},
 		methods:{
 			getList(){
-				axios.get("http://localhost:8081/employee/list/all/page",{
+				this.axiosJSON.get("/employee/list/all/page",{
 					params:{
 						rows:this.rows,
 						page:this.page
@@ -71,7 +71,7 @@
 			deleteEmployee(id){
 				let checkresult=confirm("您确认要解雇该员工吗");
 				if (checkresult){
-					axios.post("http://localhost:8081/employee/delete",{id:id}).then(result=>{
+					this.axiosJSON.post("/employee/delete",{id:id}).then(result=>{
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();
