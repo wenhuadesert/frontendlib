@@ -70,9 +70,12 @@
 		methods: {
 			add() {
 				this.axiosJson.post("/goods/add", this.goods).then(result => {
-					if (result.data.status == "OK") {
+					if (result.data.status == "ok") {
 						alert(result.data.message);
-						this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
+						console.log(result.data.intResult);
+						this.$router.push("/goods/add/photo/"+result.data.intResult); //编程方式跳转到部门列表组件
+						
+						
 					} else {
 						alert(result.data.message);
 					}
