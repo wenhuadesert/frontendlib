@@ -95,7 +95,7 @@ const routes = [
 			{path:"view/:cliid",name:"clientview",component:ClientView},
 			{path:"", redirect:"list"},
 		]},
-		{path:"expresscompany", name:"storehousemain", component:EcMain,children:[
+		{path:"expresscompany", name:"expresscompanymain", component:EcMain,children:[
 			{path:"list",name:"expresscompanylist",component:EcList},
 			{path:"add",name:"expresscompanyadd",component:EcAdd},
 			{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},

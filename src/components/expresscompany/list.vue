@@ -19,8 +19,8 @@
 				  <td>{{ec.excname}}</td>
 				  <td>{{ec.excphone}}</td>
 					<td>
-					  <router-link v-bind:to="'/employee/expresscompany/modify/'+st.storehouseId" class="btn btn-default">修改</router-link>
-					  <a href="#" v-on:click="deleteExpresscompany(st.storehouseId)"  class="btn btn-danger">删除</a> 
+					  <router-link v-bind:to="'/employee/expresscompany/modify/'+ec.excid" class="btn btn-default">修改</router-link>
+					  <a href="#" v-on:click="deleteExpresscompany(ec.excid)"  class="btn btn-danger">删除</a> 
 					  <router-link v-bind:to="{name:'expresscompanyview', params: {excid:ec.excid}}" class="btn btn-default">查看</router-link>
 					</td>
 				</tr>
@@ -51,7 +51,7 @@
 		},
 		methods:{
 			getList(){
-				this.axiosJson.get("/expresscompany/list/all",{
+				this.axiosJson.get("/expresscompany/list/all/page",{
 					params:{
 						rows:this.rows,
 						page:this.page
