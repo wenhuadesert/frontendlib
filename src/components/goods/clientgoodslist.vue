@@ -1,34 +1,42 @@
 <template>
 	<!-- Default box -->
-	<div >
+	<div class="box">
+		<div class="box-header with-border">
+			<h3 class="box-title">Title</h3>
+		</div>
+		<div class="box-body">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th scope="col">商品名称</th>
+						<th scope="col">价格</th>
+						<th scope="col">库存</th>
+						<th scope="col">品牌</th>
+						<th scope="col">图</th>
+						<th scope="col">操作</th>
+					</tr>
+				</thead>
+				<tbody>
 
-		<div >
-			
-				
-				
-	
 					<tr v-for="gm in goodsList" v-bind:key="gm.goodsId">
-						
 						<td>{{gm.goodsTag}}</td>
-						<td>{{gm.price}}</td>
-						<td>{{gm.goodsStock}}</td>
-						<td>{{gm.brand}}</td>
-						<h2></h2>
-						<img  :src="gm.photoFileName"   />
+						<td>￥{{gm.price}}</td>
+						<td>库存{{gm.goodsStock}}件</td>
+						<td>[{{gm.brand}}]</td>
 						<td>
-							<!--
-							<router-link v-bind:to="'/goods/modify/'+gm.goodsId" class="btn btn-default">修改</router-link>
-	
-							<a href="#" v-on:click="deleteGoods(gm.goodsId)" class="btn btn-danger">删除</a>
-							-->
-							<router-link v-bind:to="'/client/goods/view/'+gm.goodsId" class="btn btn-default">查看</router-link>
+							
+						</td>
+						<td>
+
+							<router-link v-bind:to="'/client/goods/view/'+gm.goodsId" class="btn btn-default">详情</router-link>
 						</td>
 					</tr>
-	
-				
-	
-			<router-link to="/goods/add" class="btn btn-default">增加商品</router-link>
-		</div> 
+
+				</tbody>
+			</table>
+
+
+		</div>
 		<!-- /.box-body -->
 	</div>
 	<!-- /.box -->
@@ -43,7 +51,8 @@
 				page: 1,
 				rows: 10,
 				count: 0,
-				pageCount: 0
+				pageCount: 0,
+				url: "./../../../static/"
 			};
 		},
 		created() { //当前组件的生命周期方法，组件创建后
@@ -67,7 +76,7 @@
 				if (checkresult) {
 					console.log(no);
 					this.axiosJson.post("/goods/delete", {
-						goodsId:(no)
+						goodsId: (no)
 					}).then(result => {
 						alert(result.data.message);
 						if (result.data.status == "ok") {
@@ -76,8 +85,8 @@
 					});
 					console.log(no);
 				}
-	
-	
+
+
 			}
 		}
 	}
