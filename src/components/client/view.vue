@@ -2,7 +2,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">查看员工信息</h3>
+          <h3 class="box-title">查看客户信息</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -15,25 +15,29 @@
         <div class="box-body">
           	<form>
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">员工姓名：</label>
-			    <span v-text="employee.name">  </span>
+			    <label for="exampleInputEmail1">客户姓名：</label>
+			    <span v-text="client.name">  </span>
 			    <small id="emailHelp" class="form-text text-muted"></small>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">员工性别：</label>
-			    <span v-text="employee.sex"></span>
+			    <label for="exampleInputPassword1">客户性别：</label>
+			    <span v-text="client.sex"></span>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">员工用户名：</label>
-			    <span v-text="employee.username"> </span>
+			    <label for="exampleInputPassword1">客户地址：</label>
+			    <span v-text="client.address"></span>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">客户用户名：</label>
+			    <span v-text="client.username"> </span>
 			    <small id="emailHelp" class="form-text text-muted"></small>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">员工密码：	</label>
-			    <span v-text="employee.password">  </span>
+			    <label for="exampleInputPassword1">客户密码：</label>
+			    <span v-text="client.password">  </span>
 			  </div>
 			  <input type="hidden" name="no" value="">
-			  <router-link to="/employee/list" class="btn btn-primary">返回</router-link>
+			  <router-link to="/client/list" class="btn btn-primary">返回</router-link>
 			</form>
         </div>
         <!-- /.box-body -->
@@ -44,26 +48,27 @@
 <script>
 	//import axios from "axios";
 	export default{
-		name:"EmployeeView",
+		name:"ClientView",
 		data(){
 			return{
-				employee:{
+				client:{
 					id:"",
 					name:"",
 					sex:"",
 					username:"",
-					password:""
+					password:"",
+					address:""
 				}
 			};
 		},
 		created(){
-			let employeeId=this.$route.params.id;
-			this.getEmployee(employeeId);
+			let clientId=this.$route.params.id;
+			this.getClient(clientId);
 		},
 		methods:{
-			getEmployee(id){
-				this.axiosJson.get("/employee/get?id="+id).then(result=>{
-					this.employee=result.data.result;
+			getClient(id){
+				this.axiosJson.get("/client/get?id="+id).then(result=>{
+					this.client=result.data.result;
 				});
 			}
 		}

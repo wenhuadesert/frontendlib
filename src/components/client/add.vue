@@ -26,16 +26,16 @@
 			    <input type="text" class="form-control" v-model="client.sex" required="">
 			  </div>
 			  <div class="form-group">
+			    <label for="exampleInputPassword1">客户地址</label>
+			    <input type="text" class="form-control" v-model="client.address" required="">
+			  </div>
+			  <div class="form-group">
 			    <label for="exampleInputPassword1">客户用户名</label>
 			    <input type="text" class="form-control" v-model="client.username" required="">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">客户密码</label>
 			    <input type="text" class="form-control" v-model="client.password" required="">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputPassword1">客户地址</label>
-			    <input type="text" class="form-control" v-model="client.address" required="">
 			  </div>
 			  <button type="submit" class="btn btn-primary">增加</button>
 			  <router-link to="/client/list" class="btn btn-default">取消</router-link>

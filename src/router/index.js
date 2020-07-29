@@ -13,6 +13,13 @@ import EmployeeAdd from "./../components/employee/add.vue";
 import EmployeeModify from "./../components/employee/modify.vue";
 import EmployeeView from "./../components/employee/view.vue";
 import EmployeeMain from "./../components/employee/main.vue";
+//客户组件路由
+import ClientList from "./../components/client/list.vue";
+import ClientLogin from "./../components/client/login.vue";
+import ClientAdd from "./../components/client/add.vue";
+import ClientModify from "./../components/client/modify.vue";
+import ClientView from "./../components/client/view.vue";
+import ClientMain from "./../components/client/main.vue";
 //仓库路由
 import StorehouseMain from "./../components/storehouse/main.vue";
 import StorehouseList  from "./../components/storehouse/list.vue";
@@ -44,21 +51,21 @@ const routes = [
 	]},
 	
 	{path:"/employee", name:"employeeapp", component:EmployeeApp, children:[
-		{path:"/storehouse", name:"storehousemain", component:StorehouseMain,children:[
+		{path:"storehouse", name:"storehousemain", component:StorehouseMain,children:[
 			{path:"list",name:"storehouselist",component:StorehouseList},
 			{path:"add",name:"storehouseadd",component:StorehouseAdd},
 			{path:"modify/:storehouseId",name:"storehousemodify",component:StorehouseModify},
 			{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView,props:true},
 			{path:"", redirect: "list" }
 		]},
-		{path:"/goods", name:"goodsmain", component:GoodsMain,children:[
+		{path:"goods", name:"goodsmain", component:GoodsMain,children:[
 			{path:"list",name:"goodslist",component:GoodsList},
 			{path:"add",name:"goodsadd",component:GoodsAdd},
 			{path:"modify/:no",name:"goodsmodify",component:GoodsModify,props:true},
 			{path:"view/:no",name:"goodsview",component:GoodsView,props:true},
 			{path:"",redirect:"list"},
 		]},
-		{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
+		{path:"employee", name:"employeemain", component:EmployeeMain, children:[
 			{path:"list",name:"employeelist", component:EmployeeList},
 			{path:"add",name:"employeeadd", component:EmployeeAdd},
 			{path:"modify/:id",name:"employeemodify", component:EmployeeModify},
@@ -66,14 +73,22 @@ const routes = [
 			{path:"view/:id",name:"employeeview",component:EmployeeView},
 			{path:"", redirect:"list"},
 		]},
-		{path:"/expresscompany", name:"storehousemain", component:EcMain,children:[
+		{path:"client", name:"clientmain", component:ClientMain, children:[
+			{path:"list",name:"clientlist", component:ClientList},
+			{path:"add",name:"clientadd", component:ClientAdd},
+			{path:"modify/:id",name:"clientmodify", component:ClientModify},
+			{path:"login",name:"clientlogin",component:ClientLogin},
+			{path:"view/:id",name:"clientview",component:ClientView},
+			{path:"", redirect:"list"},
+		]},
+		{path:"expresscompany", name:"storehousemain", component:EcMain,children:[
 			{path:"list",name:"expresscompanylist",component:EcList},
 			{path:"add",name:"expresscompanyadd",component:EcAdd},
 			{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
 			{path:"view/:excid",name:"expresscompanyview",component:EcView},
 			{path:"", redirect: "list" }
-		]}
-		
+		]},
+		{path:"/", component:HomeMain} 
 	]}
 
 

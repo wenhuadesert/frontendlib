@@ -38,7 +38,7 @@
 
 <script>
 	export default{
-		name:"EmployeeLogin",
+		name:"ClientLogin",
 		data(){
 			return{
 				uerid:"",

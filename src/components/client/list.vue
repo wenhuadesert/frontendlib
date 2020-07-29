@@ -12,9 +12,9 @@
 			            <th scope="col">编号</th>
 			            <th scope="col">姓名</th>
 			            <th scope="col">性别</th>
+			            <th scope="col">客户地址</th>
 			            <th scope="col">客户账号</th>
 			            <th scope="col">客户密码</th>
-			            <th scope="col">客户地址</th>
 			            <th scope="col">操作</th>
 			        </tr>
 			      </thead>
@@ -23,9 +23,9 @@
 			            <td>{{cm.id}}</td>
 			            <td>{{cm.name}}</td>
 			            <td>{{cm.sex}}</td>
+			            <td>{{cm.address}}</td>
 			            <td>{{cm.username}}</td>
 			            <td>{{cm.password}}</td>
-			            <td>{{cm.address}}</td>
 			            <td><router-link v-bind:to="'/client/modify/'+cm.id" class="btn btn-primary">修改</router-link>
 			            	<a href="#" v-on:click="deleteClient(cm.id)" class="btn btn-danger">删除</a> 
 			            	<router-link v-bind:to="'/client/view/'+cm.id" class="btn btn-info">查看</router-link>  
