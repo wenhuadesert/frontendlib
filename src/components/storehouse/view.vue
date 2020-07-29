@@ -21,7 +21,7 @@
 			
 	  </tbody>
 	</table>
-   <router-link to="/storehouse/list" class="btn btn-default">返回</router-link>
+   <router-link to="/employee/storehouse/list" class="btn btn-default">返回</router-link>
 </div>
 <!-- /.box-body -->
 </div>

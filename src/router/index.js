@@ -55,7 +55,7 @@ const routes = [
 		{path:"/", name:"homemain", component:HomeMain},
 		
 	]},
-	
+
 	{path:"/employee", name:"employeeapp", component:EmployeeApp, children:[
 		{path:"storehouse", name:"storehousemain", component:StorehouseMain,children:[
 			{path:"list",name:"storehouselist",component:StorehouseList},
@@ -91,7 +91,7 @@ const routes = [
 			{path:"list",name:"expresscompanylist",component:EcList},
 			{path:"add",name:"expresscompanyadd",component:EcAdd},
 			{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
-			{path:"view/:excid",name:"expresscompanyview",component:EcView},
+			{path:"view/:excid",name:"expresscompanyview",component:EcView,props:true},
 			{path:"", redirect: "list" }
 		]},
 		{path:"/", component:HomeMain} 

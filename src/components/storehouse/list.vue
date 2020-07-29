@@ -19,7 +19,7 @@
 				  <td>{{st.address}}</td>
 				  <td>{{st.capacity}}</td>
 					<td>
-					  <router-link v-bind:to="'/storehouse/modify/'+st.storehouseId" class="btn btn-default">修改</router-link>
+					  <router-link v-bind:to="'/employee/storehouse/modify/'+st.storehouseId" class="btn btn-default">修改</router-link>
 					  <a href="#" v-on:click="deleteStorehouse(st.storehouseId)"  class="btn btn-danger">删除</a> 
 					 <router-link v-bind:to="{name:'storehouseview', params: {storehouseid:st.storehouseId}}" class="btn btn-default">查看</router-link>
 					</td>
@@ -28,7 +28,7 @@
 			</table>
 		</div>
 		<!-- /.box-body -->
-		<router-link to="/storehouse/add" class="btn btn-default">增加仓库</router-link>
+		<router-link to="/employee/storehouse/add" class="btn btn-default">增加仓库</router-link>
 	</div>
 	
 </template>

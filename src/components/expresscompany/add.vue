@@ -2,21 +2,22 @@
 <!-- Default box -->
 <div class="box">
 <div class="box-header with-border">
-  <h3 class="box-title">增加仓库</h3>
+  <h3 class="box-title">增加快递公司</h3>
 </div>
 <div class="box-body">
 	<form method="post" v-on:submit.prevent="add()" >
 	  
 	  <div class="form-group">
-		<label for="exampleInputPassword1">仓库地址</label>
-		<input type="text" class="form-control" v-model="storehouse.address" required>
+		<label for="exampleInputPassword1">名字</label>
+		<input type="text" class="form-control" v-model="expresscompany.excname" required>
 	  </div>
 	  <div class="form-group">
-	  		<label for="exampleInputPassword1">仓库容量</label>
-	  		<input type="text" class="form-control" v-model="storehouse.capacity" required>
+	  		<label for="exampleInputPassword1">电话</label>
+	  		<input type="text" class="form-control" v-model="expresscompany.excphone" required>
 	  </div>
 	  <button type="submit" class="btn btn-primary">提交</button>
-	  <router-link to="/storehouse/list" class="btn btn-default">取消</router-link>
+	  <router-link to="/employee/expresscompany/list" class="btn btn-default">取消</router-link>
+	  
 	</form>
 
 </div>
@@ -27,24 +28,24 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
-		name:"StorehouseAdd",
+		name:"ExpressCompanyCAdd",
 		data(){
 			return {
-				storehouse:{
-					storehouseId:"",
-					address:"",
-					capacity:""
+				expresscompany:{
+					excid:"",
+					excname:"",
+					excphone:""
 				}
 			};
 		},
 		methods:{
 			add(){
-				axios.post("http://localhost:8200/storehouse/add",this.storehouse).then(result=>{
+				this.axiosJson.post("/expresscompany/add",this.expresscompany).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
-						this.$router.push("/storehouse/list"); //编程方式跳转到部门列表组件
+						this.$router.push("/expresscompany/list"); //编程方式跳转到部门列表组件
 					}
 					else{
 						alert(result.data.message);
