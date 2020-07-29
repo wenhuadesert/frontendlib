@@ -22,7 +22,12 @@ import EcList from "./../components/expresscompany/list.vue";
 import EcAdd from "./../components/expresscompany/add.vue";
 import EcModify from "./../components/expresscompany/modify.vue";
 import EcView from "./../components/expresscompany/view.vue";
-
+//商品
+import GoodsMain from "./../components/goods/main.vue"
+import GoodsList from "./../components/goods/list.vue"
+import GoodsAdd from "./../components/goods/add.vue"
+import GoodsModify from "./../components/goods/modify.vue"
+import GoodsView from "./../components/goods/view.vue"
 
 Vue.use(VueRouter)
 
@@ -36,7 +41,13 @@ const routes = [
 		{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView},
 		{path:"", redirect: "list" }
 	]},
-
+	{path:"/goods", name:"goodsmain", component:GoodsMain,children:[
+		{path:"list",name:"goodslist",component:GoodsList},
+		{path:"add",name:"goodsadd",component:GoodsAdd},
+		{path:"modify/:no",name:"goodsmodify",component:GoodsModify},
+		{path:"view/:no",name:"goodsview",component:GoodsView},
+		{path:"",redirect:"list"},
+	]},
 	{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
 		{path:"list",name:"employeelist", component:EmployeeList},
 		{path:"add",name:"employeeadd", component:EmployeeAdd},
