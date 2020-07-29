@@ -23,12 +23,11 @@
 						<td>{{client.goods[0].goodsId}}</td>
 						<td>{{client.goods[0].goodsTag}}</td>
 						<td>{{client.goods[0].price}}</td>
-						<td>{{client.cacount}}</td>
+						<td><input type="text" class="form-control" v-model="client.cacount" size="1"/></td>
 						<td>{{client.goods[0].brand}}</td>
 						<td>
-							<router-link v-bind:to="'/goods/modify/'+client.goods[0].goodsId" class="btn btn-default">修改</router-link>
-
-							<a href="#" v-on:click="deleteGoods(client.id, client.goods[0].goodsId)" class="btn btn-danger">删除</a>
+							<a href="#" v-on:click="modifyCart(client.id, client.goods[0].goodsId, client.cacount)" class="btn btn-default">修改</a>
+							<a href="#" v-on:click="deleteCart(client.id, client.goods[0].goodsId)" class="btn btn-danger">删除</a>
 							<router-link v-bind:to="'/goods/view/'+client.goods[0].goodsId" class="btn btn-default">查看</router-link>
 						</td>
 					</tr>
@@ -36,7 +35,7 @@
 				</tbody>
 			</table>
 
-			<router-link to="/goods/add" class="btn btn-default">增加商品</router-link>
+			<router-link to="/goods/add" class="btn btn-default">我还要买买买！</router-link>
 		</div>
 		<!-- /.box-body -->
 	</div>
@@ -74,22 +73,40 @@
 				});
 			},
 			deleteCart(id, goodsid) {
-				let checkresult = confirm("您确认要删除此商品么");
+				let checkresult = confirm("您确认要删除么");
 				if (checkresult) {
-					this.axiosJson.post("/client/cart/delete", {
-						id:(id),
-						goid:(goodsid)
-					}).then(result => {
+					this.axiosJson.post("/client/cart/delete", 
+						{
+							id:id,
+							goods:[{goodsId:goodsid}]
+						}).then(result => {
 						alert(result.data.message);
 						if (result.data.status == "ok") {
 							this.getList();
 						}
 					});
 				}
-
-
+			},
+			modifyCart(id, goodsid, count){
+				let checkresult = confirm("您确认要修改么");
+				if(checkresult){
+					this.axiosJson.post("/client/cart/modify",
+						{
+							id:id,
+							goods:[{goodsId:goodsid}],
+							cacount:count
+						}
+						).then(result=>{
+							if(result.data.status=="ok"){
+								alert(result.data.message);
+									this.getList();
+							}else{
+								alert(result.data.message);	
+							}
+						});	
+					}
+				}
 			}
-		}
 	}
 </script>
 
