@@ -26,7 +26,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	//部门修改组件
 	export default {
 		name:"StorehouseModify",
@@ -47,12 +47,12 @@
 		methods:{
 			getStorehouse(no){
 				
-				axios.get("http://localhost:8081/storehouse/get?no="+no).then(result=>{
+				this.axiosJSON.get("/storehouse/get?no="+no).then(result=>{
 					this.storehouse=result.data.result;
 				});
 			},
 			modify(){
-				axios.post("http://localhost:8081/storehouse/modify",this.storehouse).then(result=>{
+				this.axiosJSON.post("/storehouse/modify",this.storehouse).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/storehouse/list"); //编程方式跳转到仓库列表组件

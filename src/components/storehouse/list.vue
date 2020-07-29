@@ -34,7 +34,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name:"StorehouseList",
 		data(){
@@ -51,7 +51,7 @@
 		},
 		methods:{
 			getList(){
-				axios.get("http://localhost:8081/storehouse/list/all/page",{
+				this.axiosJSON.get("/storehouse/list/all/page",{
 					params:{
 						rows:this.rows,
 						page:this.page
@@ -65,7 +65,7 @@
 			deleteStorehouse(no){
 				let checkresult=confirm("您确认要删除此仓库么");
 				if(checkresult){
-					axios.post("http://localhost:8081/storehouse/delete",{storehouseId:no}).then(result=>{
+					this.axiosJson.post("/storehouse/delete",{storehouseId:no}).then(result=>{
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();

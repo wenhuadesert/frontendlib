@@ -27,7 +27,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name:"StorehouseAdd",
 		data(){
@@ -41,7 +41,7 @@
 		},
 		methods:{
 			add(){
-				axios.post("http://localhost:8081/storehouse/add",this.storehouse).then(result=>{
+				this.axiosJSON.post("/storehouse/add",this.storehouse).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/storehouse/list"); //编程方式跳转到部门列表组件
