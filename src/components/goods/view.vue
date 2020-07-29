@@ -48,7 +48,7 @@
 
 <script>
 	//部门查看组件
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name: "GoodsView",
 		data() {
@@ -72,13 +72,13 @@
 			};
 		},
 		created() { //组件的创建生命周期函数
-			console.log("???")
+			//console.log("???")
 			let goodsNo = this.$route.params.no;
 			this.getGoods(goodsNo)
 		},
 		methods: {
 			getGoods(no) {
-				axios.get("http://localhost:8080/goods/get?no=" + no).then(result => {
+				this.axiosJson.get("/goods/get?no=" + no).then(result => {
 					this.goods = result.data.result;
 				});
 			}

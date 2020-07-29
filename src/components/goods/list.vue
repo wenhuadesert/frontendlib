@@ -44,7 +44,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name: "GoodsList",
 		data() {
@@ -61,7 +61,7 @@
 		},
 		methods: {
 			getList() {
-				axios.get("http://localhost:8080/goods/list/all/page", {
+				this.axiosJson.get("/goods/list/all/page", {
 					params: {
 						rows: this.rows,
 						page: this.page
@@ -76,7 +76,7 @@
 				let checkresult = confirm("您确认要删除此商品么");
 				if (checkresult) {
 					console.log(no);
-					axios.post("http://localhost:8080/goods/delete", {
+					this.axiosJson.post("/goods/delete", {
 						goodsId:(no)
 					}).then(result => {
 						alert(result.data.message);

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	//部门修改组件
 	export default {
 		name: "GoodsModify",
@@ -81,14 +81,14 @@
 		methods: {
 			getGoods(no) {
 	
-				axios.get("http://localhost:8080/goods/get?no=" + no).then(result => {
+				this.axiosJson.get("/goods/get?no=" + no).then(result => {
 					this.goods = result.data.result;
 					console.log(this.goods.storehouse.storehouseId)
 				});
 				
 			},
 			modify() {
-				axios.post("http://localhost:8080/goods/modify", this.goods).then(result => {
+				this.axiosJson.post("/goods/modify", this.goods).then(result => {
 					if (result.data.status == "ok") {
 						alert(result.data.message);
 						this.$router.push("/goods/list"); //编程方式跳转到部门列表组件
