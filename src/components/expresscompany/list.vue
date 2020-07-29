@@ -34,7 +34,7 @@
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name:"ExpresscompanyList",
 		data(){
@@ -51,7 +51,7 @@
 		},
 		methods:{
 			getList(){
-				axios.get("http://localhost:8081/expresscompany/list/all",{
+				this.axiosJson.get("/expresscompany/list/all",{
 					params:{
 						rows:this.rows,
 						page:this.page
@@ -65,7 +65,7 @@
 			deleteExpresscompany(no){
 				let checkresult=confirm("您确认要删除此快递公司吗么");
 				if(checkresult){
-					axios.post("http://localhost:8081/expresscompany/delete",{exeid:no}).then(result=>{
+					this.axiosJson.get("/expresscompany/delete",{exeid:no}).then(result=>{
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();
