@@ -40,6 +40,7 @@ import GoodsList from "./../components/goods/list.vue"
 import GoodsAdd from "./../components/goods/add.vue"
 import GoodsModify from "./../components/goods/modify.vue"
 import GoodsView from "./../components/goods/view.vue"
+import GoodsAddPhoto from "./../components/goods/addphoto.vue"
 
 Vue.use(VueRouter)
 
@@ -55,7 +56,7 @@ const routes = [
 		{path:"/", name:"homemain", component:HomeMain},
 		
 	]},
-	
+
 	{path:"/employee", name:"employeeapp", component:EmployeeApp, children:[
 		{path:"storehouse", name:"storehousemain", component:StorehouseMain,children:[
 			{path:"list",name:"storehouselist",component:StorehouseList},
@@ -67,6 +68,7 @@ const routes = [
 		{path:"goods", name:"goodsmain", component:GoodsMain,children:[
 			{path:"list",name:"goodslist",component:GoodsList},
 			{path:"add",name:"goodsadd",component:GoodsAdd},
+			{path:"add/photo/:no",name:"goodsaddphoto",component:GoodsAddPhoto,props:true},
 			{path:"modify/:no",name:"goodsmodify",component:GoodsModify,props:true},
 			{path:"view/:no",name:"goodsview",component:GoodsView,props:true},
 			{path:"",redirect:"list"},
@@ -91,7 +93,7 @@ const routes = [
 			{path:"list",name:"expresscompanylist",component:EcList},
 			{path:"add",name:"expresscompanyadd",component:EcAdd},
 			{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
-			{path:"view/:excid",name:"expresscompanyview",component:EcView},
+			{path:"view/:excid",name:"expresscompanyview",component:EcView,props:true},
 			{path:"", redirect: "list" }
 		]},
 		{path:"/", component:HomeMain} 

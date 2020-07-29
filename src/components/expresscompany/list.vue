@@ -19,22 +19,22 @@
 				  <td>{{ec.excname}}</td>
 				  <td>{{ec.excphone}}</td>
 					<td>
-					  <router-link v-bind:to="'/expresscompany/modify/'+st.storehouseId" class="btn btn-default">修改</router-link>
+					  <router-link v-bind:to="'/employee/expresscompany/modify/'+st.storehouseId" class="btn btn-default">修改</router-link>
 					  <a href="#" v-on:click="deleteExpresscompany(st.storehouseId)"  class="btn btn-danger">删除</a> 
-					  <router-link to="/expresscompany/view" class="btn btn-default">查看</router-link>
+					  <router-link v-bind:to="{name:'expresscompanyview', params: {excid:ec.excid}}" class="btn btn-default">查看</router-link>
 					</td>
 				</tr>
 			  </tbody>
 			</table>
 		</div>
 		<!-- /.box-body -->
-		<router-link to="/expresscompany/add" class="btn btn-default">增加快递公司</router-link>
+		<router-link to="/employee/expresscompany/add" class="btn btn-default">增加快递公司</router-link>
 	</div>
 	
 </template>
 
 <script>
-	import axios from "axios";
+	//import axios from "axios";
 	export default {
 		name:"ExpresscompanyList",
 		data(){
@@ -51,7 +51,7 @@
 		},
 		methods:{
 			getList(){
-				axios.get("http://localhost:8200/expresscompany/list/all",{
+				this.axiosJson.get("/expresscompany/list/all",{
 					params:{
 						rows:this.rows,
 						page:this.page
@@ -65,7 +65,7 @@
 			deleteExpresscompany(no){
 				let checkresult=confirm("您确认要删除此快递公司吗么");
 				if(checkresult){
-					axios.post("http://localhost:8200/expresscompany/delete",{exeid:no}).then(result=>{
+					this.axiosJson.get("/expresscompany/delete",{exeid:no}).then(result=>{
 						alert(result.data.message);
 						if(result.data.status=="OK"){
 							this.getList();

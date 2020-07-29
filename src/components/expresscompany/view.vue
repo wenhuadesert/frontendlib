@@ -6,16 +6,20 @@
 </div>
 <div class="box-body">
 	<form  method="post" >
-	  <div class="form-group">
-		<label for="exampleInputEmail1">部门编码</label>
-		<span></span>
-		
-	  </div>
-	  <div class="form-group">
-		<label for="exampleInputPassword1">部门名称</label>
-		<span></span>
-	  </div>
-	  <router-link to="/department/list" class="btn btn-default">返回</router-link>
+	  <thead>
+	  		<tr>
+	  		  <th scope="col">名字</th>
+	  		  <th scope="col">电话</th>
+	  		</tr>
+	  </thead>
+	  <tbody>
+	  		
+	  		  <td>{{expresscompany.name}}</td>
+	  		  <td>{{expresscompany.phone}}</td>
+	  		  
+	  			
+	  </tbody>
+	  <router-link to="/employee/expresscompany/list" class="btn btn-default">返回</router-link>
 	</form>
 
 </div>
@@ -27,18 +31,31 @@
 <script>
 	//部门查看组件
 	export default {
-		name:"DepartmentView",
+		name:"ExpressCompanView",
 		data(){
 			return {
-				department:{}
+				epresscompany:{
+					excname:"",
+					excphone:"",
+					excid:0
+				}
 			};
 		},
+		props:{
+			excId:{required:true}
+		},
 		created(){ //组件的创建生命周期函数
-			
+			this.getExpresscompany();
 		},
 		methods:{
-			getDepartment(){
-				
+			getExpresscompany(){
+				this.axiosJson.get("/expresscompany/get",{
+					params:{
+						no:this.excId				
+					}
+				}).then(result=>{
+					this.expresscompany=result.data.result;
+				});
 			}
 		}
 	}
