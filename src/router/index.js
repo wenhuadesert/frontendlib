@@ -38,7 +38,7 @@ const routes = [
 		{path:"list",name:"storehouselist",component:StorehouseList},
 		{path:"add",name:"storehouseadd",component:StorehouseAdd},
 		{path:"modify/:storehouseId",name:"storehousemodify",component:StorehouseModify},
-		{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView},
+		{path:"view/:storehouseId",name:"storehouseview",component:StorehouseView,props:true},
 		{path:"", redirect: "list" }
 	]},
 	{path:"/goods", name:"goodsmain", component:GoodsMain,children:[

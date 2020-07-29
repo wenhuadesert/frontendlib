@@ -41,19 +41,22 @@
 				}
 			};
 		},
+		props:{
+			storehouseid:{required:true}
+		},
 		created(){ //组件的创建生命周期函数
-			let storehouseNo=this.$route.params.storehouseId;
-			this.getStorehouse(storehouseNo);
-			
+			this.getStorehouse();
 		},
 		methods:{
-			getStorehouse(no){
-				
-				this.axiosJson.get("/storehouse/get?no="+no).then(result=>{
+			getStorehouse(){
+				this.axiosJson.get("/storehouse/get",{
+					params:{
+						no:this.storehouseid				
+					}
+				}).then(result=>{
 					this.storehouse=result.data.result;
 				});
 			}
-			
 		}
 	}
 </script>
