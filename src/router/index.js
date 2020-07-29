@@ -44,8 +44,8 @@ const routes = [
 	{path:"/goods", name:"goodsmain", component:GoodsMain,children:[
 		{path:"list",name:"goodslist",component:GoodsList},
 		{path:"add",name:"goodsadd",component:GoodsAdd},
-		{path:"modify/:no",name:"goodsmodify",component:GoodsModify},
-		{path:"view/:no",name:"goodsview",component:GoodsView},
+		{path:"modify/:no",name:"goodsmodify",component:GoodsModify,props:true},
+		{path:"view/:no",name:"goodsview",component:GoodsView,props:true},
 		{path:"",redirect:"list"},
 	]},
 	{path:"/employee", name:"employeemain", component:EmployeeMain, children:[
