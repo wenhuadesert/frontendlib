@@ -52,7 +52,7 @@
 				});
 			},
 			modify(){
-				this.axiosJSON.post("/storehouse/modify",this.storehouse).then(result=>{
+				this.axiosJson.post("/storehouse/modify",this.storehouse).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
 						this.$router.push("/storehouse/list"); //编程方式跳转到仓库列表组件
