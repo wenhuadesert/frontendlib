@@ -37,6 +37,10 @@
 					<label for="exampleInputPassword1">品类编号</label>
 					<span>	{{goods.category.categoryId}}</span>
 				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">图片</label>
+					<span> <img v-bind:src="photoUrl+goods.photoFileName" width="300" height="300" alt="无图片" /></span>
+				</div>
 				<router-link to="/employee/goods/list" class="btn btn-default">返回</router-link>
 			</form>
 
@@ -68,7 +72,8 @@
 						categoryId:0,
 						categoryTag: ""
 					}
-				}
+				},
+				photoUrl: "http://localhost:8081/goodsphoto/"
 			};
 		},
 		props: {

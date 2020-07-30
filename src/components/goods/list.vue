@@ -53,7 +53,8 @@
 				page: 1,
 				rows: 10,
 				count: 0,
-				pageCount: 0
+				pageCount: 0,
+				photoUrl: "http://localhost:8081/goodsphoto/"
 			};
 		},
 		created() { //当前组件的生命周期方法，组件创建后

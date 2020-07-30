@@ -8,14 +8,17 @@
 					<div class="form-row">
 
 						<div class="form-group col-md-6">
-							<label for="inputAddress2">员工照片</label>
+							<label for="inputAddress2">商品照片</label>
 							<input type="file" class="form-control" name="employeePhoto" v-on:change="changePhoto($event)">
 						</div>
 					</div>
+					
 
 					<button type="submit" class="btn btn-primary">提交</button>
-					<router-link to="/employee/list" class="btn btn-primary">取消</router-link>
+					<router-link to="/employee/goods/list" class="btn btn-primary">取消</router-link>
+					
 				</div>
+				
 			</form>
 		</div><!-- /.box-body -->
 	</div>

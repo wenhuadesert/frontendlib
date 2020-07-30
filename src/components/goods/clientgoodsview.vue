@@ -6,36 +6,40 @@
 		</div>
 		<div class="box-body">
 			<form method="post" v-on:submit.prevent="modifyCart()">
-				<div class="form-group">
+				<div class="form-group col-md-6">
 					<label for="exampleInputEmail1">商品编号</label>
 					<span> {{goods.goodsId}}</span>
 
 				</div>
 
-				<div class="form-group">
+				<div class="form-group col-md-6">
 					<label for="exampleInputPassword1">商品名称</label>
 					<span> {{goods.goodsTag}}</span>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group col-md-6">
 					<label for="exampleInputPassword1">商品价格</label>
 					<span> {{goods.price}}</span>
 				</div>
-				<div class="form-group">
+				<div class="form-group col-md-6">
 					<label for="exampleInputPassword1">商品库存</label>
 					<span> {{goods.goodsStock}}</span>
 				</div>
-				<div class="form-group">
+				<div class="form-group col-md-6">
 					<label for="exampleInputPassword1">商品品牌</label>
 					<span> {{goods.brand}}</span>
 				</div>
-				<div class="form-group">
+				<div class="form-group col-md-6">
 					<label for="exampleInputPassword1">仓库地址</label>
 					<span> {{goods.storehouse.address}}</span>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">品类名称</label>
 					<span> {{goods.category.categoryTag}}</span>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">图片</label>
+					<span> <img v-bind:src="photoUrl+goods.photoFileName" width="300" height="300" alt="无图片" /></span>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">购买数量</label>
@@ -74,7 +78,8 @@
 						categoryTag: ""
 					}
 				},
-				num: 0
+				num: 0,
+				photoUrl: "http://localhost:8081/goodsphoto/"
 			};
 		},
 		props: {
@@ -116,7 +121,7 @@
 							alert(result.data.message);
 						}
 					});
-					this.goods.goodsStock-=this.num;
+					this.goods.goodsStock -= this.num;
 					this.axiosJson.post("/goods/modify", this.goods).then(result => {
 						if (result.data.status == "ok") {
 							alert(result.data.message);
@@ -131,7 +136,6 @@
 		}
 
 	}
-	
 </script>
 
 <style>
