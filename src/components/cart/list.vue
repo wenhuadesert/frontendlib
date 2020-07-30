@@ -19,23 +19,23 @@
 				</thead>
 				<tbody>
 
-					<tr v-for="client in clientList" v-bind:key="client.goods[0].goodsId">
-						<td>{{client.goods[0].goodsId}}</td>
-						<td>{{client.goods[0].goodsTag}}</td>
-						<td>{{client.goods[0].price}}</td>
-						<td><input type="text" class="form-control" v-model="client.cacount" size="1"/></td>
-						<td>{{client.goods[0].brand}}</td>
+					<tr v-for="good in clientList[0].goods" v-bind:key="good.goodsId">
+						<td>{{good.goodsId}}</td>
+						<td>{{good.goodsTag}}</td>
+						<td>{{good.price}}</td>
+						<td><input type="text" class="form-control" v-model="good.cartCount" size="1"/></td>
+						<td>{{good.brand}}</td>
 						<td>
-							<a href="#" v-on:click="modifyCart(client.id, client.goods[0].goodsId, client.cacount)" class="btn btn-default">修改</a>
-							<a href="#" v-on:click="deleteCart(client.id, client.goods[0].goodsId)" class="btn btn-danger">删除</a>
-							<router-link v-bind:to="'/goods/view/'+client.goods[0].goodsId" class="btn btn-default">查看</router-link>
+							<a href="#" v-on:click="modifyCart($route.params.cliid, good.goodsId, good.cartCount)" class="btn btn-default">修改</a>
+							<a href="#" v-on:click="deleteCart($route.params.cliid, good.goodsId)" class="btn btn-danger">删除</a>
+							<router-link v-bind:to="'/client/goods/view/'+good.goodsId" class="btn btn-default">查看</router-link>
 						</td>
 					</tr>
 
 				</tbody>
 			</table>
 
-			<router-link to="/goods/add" class="btn btn-default">我还要买买买！</router-link>
+			<router-link to="/client/goods/list" class="btn btn-default">我还要买买买！</router-link>
 		</div>
 		<!-- /.box-body -->
 	</div>
@@ -62,7 +62,7 @@
 			getList() {
 				this.axiosJson.get("/client/cart/list/all/page", {
 					params: {
-						id:1,
+						id:this.$route.params.cliid,
 						rows: this.rows,
 						page: this.page
 					}
@@ -93,8 +93,7 @@
 					this.axiosJson.post("/client/cart/modify",
 						{
 							id:id,
-							goods:[{goodsId:goodsid}],
-							cacount:count
+							goods:[{goodsId:goodsid, cartCount:count}]
 						}
 						).then(result=>{
 							if(result.data.status=="ok"){
