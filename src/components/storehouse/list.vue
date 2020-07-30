@@ -110,24 +110,24 @@
 			},
 			toFirstPage(){
 				this.page=1;
-				this.getList();
+				this.getListCondition();
 			},
 			toPreviousPage(){
 				if(this.page>1){
 					this.page--;
-					this.getList();
+					this.getListCondition();
 				}
 				
 			},
 			toNextPage(){
 				if(this.page<this.pageCount){
 					this.page++;
-					this.getList();
+					this.getListCondition();
 				}
 			},
 			toLastPage(){
 				this.page=this.pageCount;
-				this.getList();
+				this.getListCondition();
 			},
 			
 			}
