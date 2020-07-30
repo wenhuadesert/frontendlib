@@ -33,6 +33,10 @@
 			    <label for="exampleInputPassword1">员工密码</label>
 			    <input type="text" class="form-control" v-model="employee.password" required="">
 			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">员工照片</label>
+			    <input type="file" class="form-control" name="employeePhoto" v-on:change="changePhoto($event)" >
+			  </div>
 			  <button type="submit" class="btn btn-primary">增加</button>
 			  <router-link to="/employee/employee/list" class="btn btn-default">取消</router-link>
 			</form>
@@ -49,17 +53,28 @@
 		data(){
 			return{
 				employee:{
-					id:"",
+					id:0,
 					name:"",
 					sex:"",
 					username:"",
 					password:""
-				}
+				},
+				employeePhoto:Object
 			};
 		},
 		methods:{
+			changePhoto(event){ //图片选择的处理
+				this.employeePhoto=event.target.files[0];			
+			},
 			add(){
-				this.axiosJson.post("/employee/add",this.employee).then(result=>{
+				let formData = new FormData();
+				formData.append("name",this.employee.name);
+				formData.append("sex",this.employee.sex);
+				formData.append("username",this.employee.username);
+				formData.append("password",this.employee.password);
+				formData.append("employeePhoto",this.employeePhoto);
+				
+				this.axiosJson.post("/employee/add",formData).then(result=>{
 					if(result.data.status=="ok"){
 						alert(result.data.message);
 						this.$router.push("/employee/list");
