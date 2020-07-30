@@ -1,10 +1,12 @@
 <template>
+
+	
 	<div class="box">
 		<div class="box-header with-border">
 		  <h3 class="box-title">仓库管理</h3>	          
 		</div>
-		<div class="box-body">
-			<table class="table table-bordered">
+	    <div class="box-body">
+	        <table class="table table-bordered">
 			  <thead>
 				<tr>
 				  <th scope="col">编号</th>
@@ -25,8 +27,9 @@
 					</td>
 				</tr>
 			  </tbody>
-			</table>
+		    </table>
 		</div>
+	
 		<div class="row">
 			<div class="col-md-6">
 			个数:<span>{{count}}</span>	页数:<span>{{page}}</span>/<span>{{pageCount}}</span>
@@ -58,7 +61,8 @@
 				page:1,
 				rows:5,
 				count:0,
-				pageCount:0
+				pageCount:0,
+				address:""
 			};
 		},
 		created(){ //当前组件的生命周期方法，组件创建后
@@ -109,7 +113,8 @@
 			toLastPage(){
 				this.page=this.pageCount;
 				this.getList();
-			}
+			},
+			
 		}
 	}
 </script>

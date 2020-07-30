@@ -13,7 +13,7 @@
 	  </div>
 	  <div class="form-group">
 		<label for="exampleInputPassword1">快递公司电话</label>
-		<input type="text" class="form-control" v-model="expresscomapny.phone">
+		<input type="text" class="form-control" v-model="expresscomapny.excphone">
 	  </div>
 	  <button type="submit" class="btn btn-primary">提交</button>
 	 <router-link to="/employee/expresscompany/list" class="btn btn-default">取消</router-link>
@@ -41,13 +41,13 @@
 		},
 		created(){ //组件的创建生命周期函数
 			let excNo=this.$route.params.excid;
-			this.getStorehouse(excNo);
+			this.getExpresscomapny(excNo);
 			
 		},
 		methods:{
 			getExpresscomapny(no){
 				
-				this.axiosJson.get("/expresscomapny/get?no="+no).then(result=>{
+				this.axiosJson.get("/expresscomapny/get?id="+no).then(result=>{
 					this.expresscomapny=result.data.result;
 				});
 			},
@@ -55,11 +55,11 @@
 				this.axiosJson.post("/expresscomapny/modify",this.expresscomapny).then(result=>{
 					if(result.data.status=="OK"){
 						alert(result.data.message);
-						this.$router.push("/expresscomapny/list"); //编程方式跳转到仓库列表组件
+						this.$router.push("/employee/expresscomapny/list"); //编程方式跳转到仓库列表组件
 					}
 					else{
 						alert(result.data.message);
-						this.$router.push("/expresscomapny/list");
+						this.$router.push("/employee/expresscomapny/list");
 					}
 				});
 			}

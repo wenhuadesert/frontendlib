@@ -5,7 +5,7 @@
   <h3 class="box-title">查看部门</h3>
 </div>
 <div class="box-body">
-	<form  method="get" >
+	<table class="table table-bordered">
 	  <thead>
 	  		<tr>
 	  		  <th scope="col">名字</th>
@@ -13,12 +13,12 @@
 	  		</tr>
 	  </thead>
 	  <tbody>	
-	  	<td>{{expresscompany.name}}</td>
-	  	<td>{{expresscompany.phone}}</td>
+	  	<td>{{expresscompany.excname}}</td>
+	  	<td>{{expresscompany.excphone}}</td>
 	  		  	  			
 	  </tbody>
 	  <router-link to="/employee/expresscompany/list" class="btn btn-default">返回</router-link>
-	</form>
+	</table>
 
 </div>
 <!-- /.box-body -->
@@ -47,9 +47,9 @@
 		},
 		methods:{
 			getExpresscompany(){
-				this.axiosJson.post("/expresscompany/get",{
+				this.axiosJson.get("/expresscompany/get",{
 					params:{
-						no:this.excId				
+						id:this.excId				
 					}
 				}).then(result=>{
 					this.expresscompany=result.data.result;
