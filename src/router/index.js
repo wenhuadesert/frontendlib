@@ -52,7 +52,12 @@ import CategoryList from "./../components/category/list.vue"
 import CategoryAdd from "./../components/category/add.vue"
 import CategoryModify from "./../components/category/modify.vue"
 import CategoryView from "./../components/category/view.vue"
-
+//快递路由
+import ExpressMain from "./../components/express/main.vue"
+import ExpressList from "./../components/express/list.vue"
+import ExpressAdd from "./../components/express/add.vue"
+import ExpressModify from "./../components/express/modify.vue"
+import ExpressView from "./../components/express/view.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -121,6 +126,13 @@ const routes = [
 			{path:"modify/:excid",name:"expresscompanymodify",component:EcModify},
 			{path:"view/:excid",name:"expresscompanyview",component:EcView,props:true},
 			{path:"", redirect: "list" }
+		]},
+		{path:"express", name:"expressmain", component:ExpressMain,children:[
+			{path:"list",name:"expresslist",component:ExpressList},
+			{path:"add",name:"expressadd",component:ExpressAdd},
+			{path:"modify/:id",name:"expressmodify",component:ExpressModify,props:true},
+			{path:"view/:id",name:"expressview",component:ExpressView,props:true},
+			{path:"",redirect:"list"},
 		]},
 		{path:"/", component:HomeMain} 
 	]}
