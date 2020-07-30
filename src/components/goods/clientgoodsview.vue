@@ -5,7 +5,7 @@
 			<h3 class="box-title">查看商品</h3>
 		</div>
 		<div class="box-body">
-			<form method="post" v-on:submit.prevent="modifyCart()">
+			<form method="post" v-on:submit.prevent="modifyCart(1)">
 				<div class="form-group col-md-6">
 					<label for="exampleInputEmail1">商品编号</label>
 					<span> {{goods.goodsId}}</span>
@@ -110,9 +110,9 @@
 					this.axiosJson.post("/client/cart/add", {
 						id: id,
 						goods: [{
-							goodsId: this.goods.goodsId
+							goodsId: this.goods.goodsId,
+							cartCount: this.num
 						}],
-						cacount: this.num
 					}).then(result => {
 						if (result.data.status == "ok") {
 							alert(result.data.message);

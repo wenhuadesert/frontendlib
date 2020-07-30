@@ -1,7 +1,31 @@
 <template>
-	
+	<div>
+		<div class="row">
+			<div clas="col-md-12">
+				<form>
+				  <div class="form-row">
+					<div class="form-group col-md-3">
+					  <label for="inputPassword4">姓名检索</label>
+					  <input type="text" class="form-control" v-model="name" v-on:change="getListByCondition">
+					</div>
+					<div class="form-group col-md-3">
+					  <label for="inputPassword4">性别检索</label>
+					  <input type="text" class="form-control" v-model="sex" v-on:change="getListByCondition">
+					</div>
+					<div class="form-group col-md-3">
+					  <label for="inputPassword4">地址检索</label>
+					  <input type="text" class="form-control" v-model="address" v-on:change="getListByCondition">
+					</div>
+					<div class="form-group col-md-3">
+					  <label for="inputPassword4">用户名检索</label>
+					  <input type="text" class="form-control" v-model="username" v-on:change="getListByCondition">
+					</div>
+				  </div>
+				</form>
+			</div>
+		</div>
 	      <!-- Default box -->
-	      <div class="box">
+		<div class="box">
 	        <div class="box-header with-border">
 	          <h3 class="box-title">客户列表</h3>
 	        </div>
@@ -33,12 +57,29 @@
 			        </tr>
 			      </tbody>
 			    </table>
+				
+				<div class="row">
+					<div class="col-md-6">
+					个数:<span>{{count}}</span>	页数:<span>{{page}}</span>/<span>{{pageCount}}</span>
+					</div>
+					<div class="col-md-6 text-right">
+						<nav>
+						  <ul class="pagination justify-content-end">
+							<li class="page-item"><a class="page-link" href="#">首页</a></li>
+							<li class="page-item"><a class="page-link" href="#" >上页</a></li>
+							<li class="page-item"><a class="page-link" href="#" >下页</a></li>
+							<li class="page-item"><a class="page-link" href="#" >末页</a></li>
+						  </ul>
+						</nav>
+					</div>
+				</div> 
 			    
 	        	<router-link to="/employee/client/add" class="btn btn-default">增加新部门</router-link>
 	        </div>
 	        <!-- /.box-body -->
 	      </div>
 	      <!-- /.box -->
+	</div>
 </template>
 
 <script>
@@ -49,31 +90,39 @@
 			return{
 				clientList:[],
 				page:1,
-				rows:10,
+				rows:6,
 				count:0,
-				pageCount:0
+				pageCount:0,
+				name:"",
+				sex:"",
+				username:"",
+				address:""
 			};
 		},
 		created(){//当前组件的生命周期方法，组件创建后
-			this.getList();
+			this.getListByCondition();
 		},
 		methods:{
-			getList(){
-				this.axiosJson.get("/client/list/all/page",{
+			getListByCondition(){
+				this.axiosJson.get("/client/list/condition/page",{
 					params:{
 						rows:this.rows,
-						page:this.page
+						page:this.page,
+						name:this.name,
+						sex:this.sex,
+						username:this.username,
+						address:this.address
 					}
 				}).then(result=>{
 					this.clientList=result.data.list;
-					this.cout=result.count;
-					this.pageCount=result.pageCount;
+					this.count=result.data.count;
+					this.pageCount=result.data.pageCount;
 				});
 			},
 			deleteClient(id){
 				let checkresult=confirm("您确认要删除该客户吗");
 				if (checkresult){
-					this.axiosJson.post("/client/delete",{id:id}).then(result=>{
+					this.axiosJson.post("/employee/client/delete",{id:id}).then(result=>{
 						alert(result.data.message);
 						if(result.data.status=="ok"){
 							this.getList();
