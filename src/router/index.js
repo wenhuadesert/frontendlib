@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 //引入路由管理组件
+import AdminLogin from "./../components/admin/login.vue";
 //子App组件
 import EmployeeApp from "./../components/employeeApp.vue";
 import ClientApp from "./../components/clientApp.vue";
@@ -63,7 +64,7 @@ Vue.use(VueRouter)
 const routes = [
 	//{path:"/", name:"homeapp", component:HomeApp},
 	
-	
+	{path:"/login",name:"login",component:AdminLogin},
 	{path:"/client", name:"clientapp", component:ClientApp, children:[
 		{path:"cart", name:"cartmain", component:CartMain, children:[
 			{path:"list/:cliid",name:"cartlist", component:CartList},
