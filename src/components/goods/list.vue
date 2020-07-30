@@ -36,7 +36,7 @@
 				</tbody>
 			</table>
 
-			<router-link to="/goods/add" class="btn btn-default">增加商品</router-link>
+			<router-link to="add" class="btn btn-default">增加商品</router-link>
 		</div>
 		<!-- /.box-body -->
 	</div>

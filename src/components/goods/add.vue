@@ -34,7 +34,7 @@
 				</div>
 				 
 				<button type="submit" class="btn btn-primary">确定</button>
-				<router-link to="/goods/list" class="btn btn-default">取消</router-link>
+				<router-link to="list" class="btn btn-default">取消</router-link>
 			</form>
 
 		</div>

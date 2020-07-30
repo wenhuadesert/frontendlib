@@ -46,6 +46,13 @@ import GoodsClientView from "./../components/goods/clientgoodsview.vue"
 //购物车路由
 import CartList from "./../components/cart/list.vue"
 import CartMain from "./../components/cart/main.vue"
+//商品类别
+import CategoryMain from "./../components/category/main.vue"
+import CategoryList from "./../components/category/list.vue"
+import CategoryAdd from "./../components/category/add.vue"
+import CategoryModify from "./../components/category/modify.vue"
+import CategoryView from "./../components/category/view.vue"
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -83,6 +90,13 @@ const routes = [
 			{path:"add/photo/:no",name:"goodsaddphoto",component:GoodsAddPhoto,props:true},
 			{path:"modify/:no",name:"goodsmodify",component:GoodsModify,props:true},
 			{path:"view/:no",name:"goodsview",component:GoodsView,props:true},
+			{path:"",redirect:"list"},
+		]},
+		{path:"category", name:"categorymain", component:CategoryMain,children:[
+			{path:"list",name:"categorylist",component:CategoryList},
+			{path:"add",name:"categoryadd",component:CategoryAdd},
+			{path:"modify/:no",name:"categorymodify",component:CategoryModify,props:true},
+			{path:"view/:no",name:"categoryview",component:CategoryView,props:true},
 			{path:"",redirect:"list"},
 		]},
 		{path:"employee", name:"employeemain", component:EmployeeMain, children:[
