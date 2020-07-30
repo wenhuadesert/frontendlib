@@ -44,6 +44,14 @@
 	      <!-- sidebar menu: : style can be found in sidebar.less -->
 	      <ul class="sidebar-menu" data-widget="tree">
 	        <li class="header">系统功能选择</li>
+			<li class="treeview">
+			  <router-link to="/client/goods/list">
+			    <i class="fa fa-dashboard"></i> <span>商品列表</span>
+			    <span class="pull-right-container">
+			      <i class="fa fa-angle-left pull-right"></i>
+			    </span>
+			  </router-link>
+			</li>
 	        <li class="treeview">
 	          <router-link to="/client/cart/list/1">
 	            <i class="fa fa-dashboard"></i> <span>购物车</span>

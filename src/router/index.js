@@ -77,7 +77,7 @@ const routes = [
 			{path:"list",name:"goodsclientlist",component:GoodsClientList},
 			{path:"view/:no",name:"goodsclientview",component:GoodsClientView,props:true},
 		]},
-		{path:"/", name:"homemain", component:HomeMain},
+		{path:"", redirect: "goods/list"},
 		
 	]},
 
