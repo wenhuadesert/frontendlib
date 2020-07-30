@@ -1,5 +1,18 @@
 <template>
-
+<div>
+    <div class="row">
+    	<div clas="col-md-12">
+    		<form>
+    		  <div class="form-row">
+    		
+    			<div class="form-group col-md-3">
+    			  <label for="inputPassword4">地址检索</label>
+    			  <input type="text" class="form-control" v-model="address" v-on:change="getListCondition">
+    			</div>
+    		  </div>
+    		</form>
+    	</div>
+    </div>
 	
 	<div class="box">
 		<div class="box-header with-border">
@@ -48,7 +61,7 @@
 		<!-- /.box-body -->
 		<router-link to="/employee/storehouse/add" class="btn btn-default">增加仓库</router-link>
 	</div>
-	
+</div>	
 </template>
 
 <script>
@@ -66,14 +79,16 @@
 			};
 		},
 		created(){ //当前组件的生命周期方法，组件创建后
-			this.getList();
+			this.getListCondition();
+			
 		},
 		methods:{
-			getList(){
-				this.axiosJson.get("/storehouse/list/all/page",{
+			getListCondition(){
+				this.axiosJson.get("/storehouse/list/condition/page",{
 					params:{
 						rows:this.rows,
-						page:this.page
+						page:this.page,
+						address:this.address
 					}
 				}).then(result=>{
 					this.storehouseList=result.data.list;
@@ -115,8 +130,10 @@
 				this.getList();
 			},
 			
+			}
+			
 		}
-	}
+	
 </script>
 
 <style>
