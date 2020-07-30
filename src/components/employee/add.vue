@@ -77,7 +77,7 @@
 				this.axiosJson.post("/employee/add",formData).then(result=>{
 					if(result.data.status=="ok"){
 						alert(result.data.message);
-						this.$router.push("/employee/list");
+						this.$router.push("/employee/employee/list");
 					}else{
 						alert(result.data.message);	
 					}
